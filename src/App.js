@@ -1,14 +1,22 @@
 import React from 'react';
 import './App.css';
-// import Spinner from '../src/components/layout/Spinner';
-import Button from '@material-ui/core/Button';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from '../src/components/layout/Navbar';
+// import Footer from '../src/components/layout/Footer';
+import Landing from '../src/components/Landing';
+import Show from '../src/components/shows/Show';
 
 function App() {
   return (
     <div className='App'>
-      <Navbar />
-      
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/' component={Landing} exact />
+          <Route path='/details' component={Show} exact />
+        </Switch>
+        {/* <Footer /> */}
+      </Router>
     </div>
   );
 }
