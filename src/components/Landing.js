@@ -14,7 +14,7 @@ class Landing extends Component {
 
   componentDidMount() {
     try {
-        fetch(`http://api.tvmaze.com/search/shows?q=modern`)
+        fetch(`http://api.tvmaze.com/search/shows?q=family`)
           .then((response) => response.json())
           .then((data) => this.setState({ shows: data, isLoading: false }));
       } catch (error) {
@@ -49,6 +49,7 @@ class Landing extends Component {
           onSearchChangeHandler={this.onSearchChangeHandler}
           onSubmit={this.onSubmit}
         />
+        <p>Example search...</p>
         <Shows shows={this.state.shows} isLoading={this.state.isLoading} />
       </Fragment>
     );
