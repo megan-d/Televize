@@ -10,6 +10,24 @@
   pointer-events: none;
 }
 
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: grey;
+  width: 500px;
+  height: 500px;
+  margin-bottom: 3rem;
+}
+
 .spinner {
   border: 10px solid black;
   border-top: 10px solid black;

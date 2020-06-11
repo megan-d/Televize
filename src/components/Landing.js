@@ -1,14 +1,25 @@
-import React, { Component } from 'react';
-import Spinner from '../components/layout/Spinner';
+import React, { Component, Fragment } from 'react';
+import Shows from './shows/Shows';
+import Searchbox from './search/Searchbox';
 
 class Landing extends Component {
   constructor() {
     super();
     this.state = {
       searchfield: '',
-      shows: '',
-      isLoading: false
+      shows: [],
+      isLoading: true,
     };
+  }
+
+  componentDidMount() {
+    try {
+        fetch(`http://api.tvmaze.com/search/shows?q=modern`)
+          .then((response) => response.json())
+          .then((data) => this.setState({ shows: data, isLoading: false }));
+      } catch (error) {
+        console.error(error);
+      }
   }
 
   onSearchChangeHandler = (e) => {
@@ -19,7 +30,7 @@ class Landing extends Component {
     try {
       fetch(`http://api.tvmaze.com/search/shows?q=${query}`)
         .then((response) => response.json())
-        .then((data) => this.setState({ shows: data, isLoading: false}));
+        .then((data) => this.setState({ shows: data, isLoading: false }));
     } catch (error) {
       console.error(error);
     }
@@ -27,23 +38,19 @@ class Landing extends Component {
 
   onSubmit = async (e) => {
     e.preventDefault();
-    this.setState({isLoading: true});
+    this.setState({ isLoading: true });
     await this.fetchData(this.state.searchfield);
   };
 
   render() {
     return (
-        this.state.isLoading? (
-            <Spinner />
-        ) :
-      <div>
-        <input
-          type='search'
-          placeholder='Search for a TV show...'
-          onChange={this.onSearchChangeHandler}
-        ></input>
-        <input type='submit' onClick={this.onSubmit}></input>
-      </div>
+      <Fragment>
+        <Searchbox
+          onSearchChangeHandler={this.onSearchChangeHandler}
+          onSubmit={this.onSubmit}
+        />
+        <Shows shows={this.state.shows} isLoading={this.state.isLoading} />
+      </Fragment>
     );
   }
 }

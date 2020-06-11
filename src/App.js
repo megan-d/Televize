@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from '../src/components/layout/Navbar';
 // import Footer from '../src/components/layout/Footer';
 import Landing from '../src/components/Landing';
-import Show from '../src/components/shows/Show';
+import Details from '../src/components/shows/Details';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path='/' component={Landing} exact />
-          <Route path='/details' component={Show} exact />
+          <Route path='/details' component={Details} exact />
         </Switch>
         {/* <Footer /> */}
       </Router>
