@@ -30,7 +30,7 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton> */}
           <Typography variant="h6" className={classes.title}>
-            TV-Search
+            Movie Search
           </Typography>
           {/* <Button color="inherit">Login</Button> */}
         </Toolbar>

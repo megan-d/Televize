@@ -1,22 +1,25 @@
 import React, { Component, Fragment } from 'react';
-import Shows from './shows/Shows';
+import Movies from './movies/Movies';
 import Searchbox from './search/Searchbox';
+
+
 
 class Landing extends Component {
   constructor() {
     super();
     this.state = {
       searchfield: '',
-      shows: [],
+      movies: [],
       isLoading: true,
     };
   }
 
   componentDidMount() {
     try {
-        fetch(`http://api.tvmaze.com/search/shows?q=family`)
+        fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=&language=en-US&page=1`)
           .then((response) => response.json())
-          .then((data) => this.setState({ shows: data, isLoading: false }));
+          .then((data) => this.setState({ movies: data.results, isLoading: false }));
+          
       } catch (error) {
         console.error(error);
       }
@@ -30,7 +33,7 @@ class Landing extends Component {
     try {
       fetch(`http://api.tvmaze.com/search/shows?q=${query}`)
         .then((response) => response.json())
-        .then((data) => this.setState({ shows: data, isLoading: false }));
+        .then((data) => this.setState({ movies: data, isLoading: false }));
     } catch (error) {
       console.error(error);
     }
@@ -49,8 +52,8 @@ class Landing extends Component {
           onSearchChangeHandler={this.onSearchChangeHandler}
           onSubmit={this.onSubmit}
         />
-        <p>Example search...</p>
-        <Shows shows={this.state.shows} isLoading={this.state.isLoading} />
+        <p>Upcoming Movies</p>
+        <Movies movies={this.state.movies} isLoading={this.state.isLoading} />
       </Fragment>
     );
   }

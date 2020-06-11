@@ -6,7 +6,7 @@ function Searchbox(props) {
     <div>
       <input
         type='search'
-        placeholder='Search for a TV show...'
+        placeholder='Search for a movie...'
         onChange={props.onSearchChangeHandler}
       ></input>
       <input type='submit' onClick={props.onSubmit}></input>
