@@ -5,15 +5,19 @@ import Spinner from '../layout/Spinner';
 import Movie from './Movie';
 
 function Movies(props) {
+  
   return props.isLoading ? (
     <Spinner />
-  ) : !props.isLoading && props.movies.length === 0 ? (
+  ) : !props.isLoading && props.movies.status_code === 34 ? (
     <p>Your search did not return any results. Please try another search.</p>
   ) : (
     !props.isLoading &&
     props.movies.length > 0 && 
     <div className='cards'>
         {props.movies.map((movie, index) => {
+          //Check to see if there's a poster image for the movie. If not, set the image to null so can display generic image.
+          let image;
+          movie.poster_path ? image = `https://image.tmdb.org/t/p/w200/${movie.poster_path}` : image = null;
             return (
                 
                     
@@ -22,7 +26,7 @@ function Movies(props) {
                     id={movie.id}
                     title={movie.title}
                     summary={movie.overview}
-                    image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                    image={image}
                 />
                 
             )

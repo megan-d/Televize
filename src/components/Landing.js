@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Movies from './movies/Movies';
 import Searchbox from './search/Searchbox';
-
+import { key } from '../config';
 
 
 class Landing extends Component {
@@ -16,9 +16,10 @@ class Landing extends Component {
 
   componentDidMount() {
     try {
-        fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=&language=en-US&page=1`)
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`)
           .then((response) => response.json())
-          .then((data) => this.setState({ movies: data.results, isLoading: false }));
+          //Filter the movie results to inlclude those with specific genres
+          .then((data) => this.setState({ movies: data.results.filter(el => el.genre_ids.includes(28)), isLoading: false }));
           
       } catch (error) {
         console.error(error);
@@ -31,9 +32,9 @@ class Landing extends Component {
 
   fetchData = (query) => {
     try {
-      fetch(`http://api.tvmaze.com/search/shows?q=${query}`)
+      fetch(`https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`)
         .then((response) => response.json())
-        .then((data) => this.setState({ movies: data, isLoading: false }));
+        .then((data) => this.setState({ movies: data.results, isLoading: false }));
     } catch (error) {
       console.error(error);
     }
@@ -52,7 +53,7 @@ class Landing extends Component {
           onSearchChangeHandler={this.onSearchChangeHandler}
           onSubmit={this.onSubmit}
         />
-        <p>Upcoming Movies</p>
+        <p>Popular Action Movies</p>
         <Movies movies={this.state.movies} isLoading={this.state.isLoading} />
       </Fragment>
     );

@@ -6,13 +6,13 @@ function Movie(props) {
     <div className='card'>
       <img alt='movie' src={props.image}></img>
       <h1>{props.title}</h1>
-      <Link to='/details'>Learn more...</Link>
+      <Link to='/details'>Learn more</Link>
     </div>
   ) : (
     <div className='card'>
-      <p>No image available</p>
+      <div className='no-image'>No image available</div>
       <h1>{props.title}</h1>
-      <Link to='/details'>Learn more...</Link>
+      <Link to='/details'>Learn more</Link>
     </div>
   );
 }
