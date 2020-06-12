@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 function Movie(props) {
   return props.image ? (
     <div className='card'>
-      <img alt='movie' src={props.image}></img>
-      <h1>{props.title}</h1>
+      <img alt='movie' src={props.image} className='poster'></img>
+      <h1 className='movie-title'>{props.title}</h1>
       <Link to='/details'>Learn more</Link>
     </div>
   ) : (

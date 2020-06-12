@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 function Searchbox(props) {
   return (
-    <div>
+    <form onSubmit={props.onSubmit}>
       <input
         type='search'
         placeholder='Search for a movie...'
         onChange={props.onSearchChangeHandler}
       ></input>
-      <input type='submit' onClick={props.onSubmit}></input>
-    </div>
+      <input type='submit' value='submit'></input>
+    </form>
   );
 }
 

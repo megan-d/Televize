@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
 
 function Details(props) {
     return (
@@ -9,9 +8,6 @@ function Details(props) {
     )
 }
 
-Details.propTypes = {
-
-}
 
 export default Details;
 
