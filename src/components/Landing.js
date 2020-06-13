@@ -36,13 +36,13 @@ class Landing extends Component {
             comedy: data.results
               .filter((el) => el.genre_ids.includes(35))
               .slice(0, 4),
-              adventure: data.results
+            adventure: data.results
               .filter((el) => el.genre_ids.includes(12))
               .slice(0, 4),
-              drama: data.results
+            drama: data.results
               .filter((el) => el.genre_ids.includes(18))
               .slice(0, 4),
-              horror: data.results
+            horror: data.results
               .filter((el) => el.genre_ids.includes(27))
               .slice(0, 4),
             isLoading: false,
@@ -82,13 +82,28 @@ class Landing extends Component {
   resetSearch = () => {
     try {
       fetch(
-        `https://api.themoviedb.org/3/movie/top_ratedapi_key=${key}&language=en-US&page=1`,
+        `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`,
       )
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres
         .then((data) =>
           this.setState({
-            action: data.results.filter((el) => el.genre_ids.includes(28)),
+            movies: data.results,
+            action: data.results
+              .filter((el) => el.genre_ids.includes(28))
+              .slice(0, 4),
+            comedy: data.results
+              .filter((el) => el.genre_ids.includes(35))
+              .slice(0, 4),
+            adventure: data.results
+              .filter((el) => el.genre_ids.includes(12))
+              .slice(0, 4),
+            drama: data.results
+              .filter((el) => el.genre_ids.includes(18))
+              .slice(0, 4),
+            horror: data.results
+              .filter((el) => el.genre_ids.includes(27))
+              .slice(0, 4),
             isLoading: false,
             isSearching: false,
             searchfield: '',
@@ -106,31 +121,19 @@ class Landing extends Component {
           onSearchChangeHandler={this.onSearchChangeHandler}
           onSubmit={this.onSubmit}
         />
-        <Movies
-          movies={this.state.action}
-          isLoading={this.state.isLoading}
-          genre={'Action'}
-        />
-        <Movies
-          movies={this.state.comedy}
-          isLoading={this.state.isLoading}
-          genre={'Comedy'}
-        />
+        <h2 className='genre-heading'>Popular Action Movies</h2>
+        <Movies movies={this.state.action} isLoading={this.state.isLoading} />
+        <h2 className='genre-heading'>Popular Comedy Movies</h2>
+        <Movies movies={this.state.comedy} isLoading={this.state.isLoading} />
+        <h2 className='genre-heading'>Popular Adventure Movies</h2>
         <Movies
           movies={this.state.adventure}
           isLoading={this.state.isLoading}
-          genre={'Adventure'}
         />
-        <Movies
-          movies={this.state.drama}
-          isLoading={this.state.isLoading}
-          genre={'Drama'}
-        />
-        <Movies
-          movies={this.state.horror}
-          isLoading={this.state.isLoading}
-          genre={'Horror'}
-        />
+        <h2 className='genre-heading'>Popular Drama Movies</h2>
+        <Movies movies={this.state.drama} isLoading={this.state.isLoading} />
+        <h2 className='genre-heading'>Popular Horror Movies</h2>
+        <Movies movies={this.state.horror} isLoading={this.state.isLoading} />
       </Fragment>
     ) : (
       <SearchResults

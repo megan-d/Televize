@@ -12,7 +12,7 @@ function Movies(props) {
     !props.isLoading &&
     props.movies.length > 0 && (
       <Fragment>
-        <h2 className='genre-heading'>Popular {props.genre} Movies</h2>
+        
         <div className='cards'>
           {props.movies.map((movie, index) => {
             //Check to see if there's a poster image for the movie. If not, set the image to null so can display generic image.
