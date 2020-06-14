@@ -27,6 +27,7 @@ function Movies(props) {
                 title={movie.title}
                 summary={movie.overview}
                 image={image}
+                getDetails={props.getDetails}
               />
             );
           })}

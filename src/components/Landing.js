@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Movies from './movies/Movies';
 import Searchbox from './search/Searchbox';
 import SearchResults from './search/SearchResults';
+import Details from './movies/Details';
 import Spinner from './layout/Spinner';
 import { key } from '../config';
 
@@ -19,6 +20,7 @@ class Landing extends Component {
       horror: [],
       isLoading: true,
       isSearching: false,
+      isDetails: false,
     };
   }
 
@@ -93,7 +95,18 @@ class Landing extends Component {
     }
   };
 
-  getDetails = () => {};
+  getDetails = async (id) => {
+    // const id = e.currentTarget.value;
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`,
+      );
+      const data = await response.json();
+      this.setState({ movie: data, isDetails: true });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   render() {
     return !this.state.isSearching ? (
@@ -106,18 +119,35 @@ class Landing extends Component {
             onSubmit={this.onSubmit}
           />
           <h2 className='genre-heading'>Popular Action Movies</h2>
-          <Movies movies={this.state.action} isLoading={this.state.isLoading} />
+          <Movies
+            movies={this.state.action}
+            isLoading={this.state.isLoading}
+            getDetails={this.getDetails}
+          />
           <h2 className='genre-heading'>Popular Comedy Movies</h2>
-          <Movies movies={this.state.comedy} isLoading={this.state.isLoading} />
+          <Movies
+            movies={this.state.comedy}
+            isLoading={this.state.isLoading}
+            getDetails={this.getDetails}
+          />
           <h2 className='genre-heading'>Popular Adventure Movies</h2>
           <Movies
             movies={this.state.adventure}
             isLoading={this.state.isLoading}
+            getDetails={this.getDetails}
           />
           <h2 className='genre-heading'>Popular Drama Movies</h2>
-          <Movies movies={this.state.drama} isLoading={this.state.isLoading} />
+          <Movies
+            movies={this.state.drama}
+            isLoading={this.state.isLoading}
+            getDetails={this.getDetails}
+          />
           <h2 className='genre-heading'>Popular Horror Movies</h2>
-          <Movies movies={this.state.horror} isLoading={this.state.isLoading} />
+          <Movies
+            movies={this.state.horror}
+            isLoading={this.state.isLoading}
+            getDetails={this.getDetails}
+          />
         </Fragment>
       )
     ) : (
