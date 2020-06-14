@@ -6,6 +6,7 @@ import Footer from '../src/components/layout/Footer';
 import Landing from '../src/components/Landing';
 import Details from '../src/components/movies/Details';
 
+
 function App() {
   return (
     <div className='App'>

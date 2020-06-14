@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import Movies from '../movies/Movies';
+import Button from 'react-bootstrap/Button';
 
 const SearchResults = ({ searchfield, movies, isLoading, isSearching, reset, getDetails, goBack }) => {
   return (
     <div>
       <Fragment>
-        <button onClick={reset}>Back</button>
+        <Button onClick={reset}>Back</Button>
         <p>Showing results for '{searchfield}'</p>
         <Movies
           movies={movies}

@@ -12,7 +12,7 @@ function Searchbox(props) {
           placeholder='Search for a movie...'
           onChange={props.onSearchChangeHandler}
         ></input>
-        <input type='submit' value='submit'></input>
+        <input type='submit' value='Submit'></input>
       </form>
     </Fragment>
   );
