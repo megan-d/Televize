@@ -1,13 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { key } from '../../config';
+import Spinner from '../layout/Spinner';
 
 function Details(props) {
-    return (
-        <div>
-            This page will load the details for the show that is selected...
-        </div>
-    )
+  return <div>test</div>;
 }
 
-
 export default Details;
-
