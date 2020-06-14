@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Movies from '../movies/Movies';
 
-const SearchResults = ({ searchfield, movies, isLoading, isSearching, reset }) => {
+const SearchResults = ({ searchfield, movies, isLoading, isSearching, reset, getDetails, goBack }) => {
   return (
     <div>
       <Fragment>
@@ -12,6 +12,8 @@ const SearchResults = ({ searchfield, movies, isLoading, isSearching, reset }) =
           isLoading={isLoading}
           searchfield={searchfield}
           isSearching={isSearching}
+          getDetails={getDetails}
+          reset={reset}
         />
       </Fragment>
     </div>

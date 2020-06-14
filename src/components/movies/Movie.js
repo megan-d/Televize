@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { key } from '../../config';
 import Details from './Details';
+import Button from 'react-bootstrap/Button';
 
 function Movie(props) {
 
@@ -9,7 +10,7 @@ function Movie(props) {
     <div className='card'>
       <img alt='movie' src={props.image} className='poster'></img>
       <h1 className='movie-title'>{props.title}</h1>
-      <button href='/details' onClick={() => props.getDetails(props.id)}>
+      <button onClick={() => props.getDetails(props.id)}>
         Learn more
       </button>
     </div>
@@ -17,7 +18,7 @@ function Movie(props) {
     <div className='card'>
       <div className='no-image'>No image available</div>
       <h1>{props.title}</h1>
-      <button href='/details' onClick={() => props.getDetails(props.id)}>
+      <button onClick={() => props.getDetails(props.id)}>
         Learn more
       </button>
     </div>

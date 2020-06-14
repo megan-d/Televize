@@ -58,6 +58,7 @@ class Landing extends Component {
             .slice(0, 4),
           isLoading: false,
           isSearching: false,
+          isDetails: false,
           searchfield: '',
         }),
       );
@@ -74,7 +75,7 @@ class Landing extends Component {
       )
         .then((response) => response.json())
         .then((data) =>
-          this.setState({ movies: data.results, isLoading: false }),
+          this.setState({ movies: data.results, isLoading: false, isSearching: true }),
         );
     } catch (error) {
       console.error(error);
@@ -109,7 +110,9 @@ class Landing extends Component {
   };
 
   render() {
-    return !this.state.isSearching ? (
+    return this.state.isDetails ? (
+        <Details isLoading={this.state.isLoading} movie={this.state.movie} goBack={this.resetPopular}/>
+    ) : !this.state.isSearching ? (
       this.state.isLoading ? (
         <Spinner />
       ) : (
@@ -157,6 +160,7 @@ class Landing extends Component {
         isSearching={this.state.isSearching}
         searchfield={this.state.searchfield}
         reset={this.resetPopular}
+        getDetails={this.getDetails}
       />
     );
   }
