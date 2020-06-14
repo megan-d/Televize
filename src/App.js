@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from '../src/components/layout/Navbar';
+import Header from '../src/components/layout/Header';
 import Footer from '../src/components/layout/Footer';
 import Landing from '../src/components/Landing';
 import Details from '../src/components/movies/Details';
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className='App'>
       <Router>
-        <Navbar />
+        <Header />
         <Landing />
         <Footer />
       </Router>

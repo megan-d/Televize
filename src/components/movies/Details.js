@@ -10,7 +10,7 @@ function Details(props) {
       <p>Title:</p>
       <p>{props.movie.title}</p>
 
-      <Button onClick={() => props.resetSearch(props.query)}>Back</Button>
+      <Button onClick={() => props.resetSearch(props.query)}>Back to Search Results</Button>
     </Fragment>
   ) : (
     <Fragment>
