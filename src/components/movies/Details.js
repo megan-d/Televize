@@ -5,12 +5,21 @@ import Movie from './Movie';
 import Button from 'react-bootstrap/Button';
 
 function Details(props) {
-return <Fragment>
-    <p>Title:</p>
-<p>{props.movie.title}</p>
+  return props.isSearching ? (
+    <Fragment>
+      <p>Title:</p>
+      <p>{props.movie.title}</p>
 
-<Button onClick={() => props.fetchSearch(props.movie.id)}>Back</Button>
-</Fragment>;
+      <Button onClick={() => props.resetSearch(props.query)}>Back</Button>
+    </Fragment>
+  ) : (
+    <Fragment>
+      <p>Title:</p>
+      <p>{props.movie.title}</p>
+
+      <Button onClick={() => props.resetPopular()}>Back</Button>
+    </Fragment>
+  );
 }
 
 export default Details;
