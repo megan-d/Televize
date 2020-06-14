@@ -17,7 +17,7 @@ function Movie(props) {
   ) : (
     <div className='card'>
       <div className='no-image'>No image available</div>
-      <h1>{props.title}</h1>
+      <h1 className='movie-title'>{props.title}</h1>
       <button onClick={() => props.getDetails(props.id)}>
         Learn more
       </button>

@@ -96,6 +96,20 @@ class Landing extends Component {
     }
   };
 
+  resetSearch = (query) => {
+    try {
+      fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`,
+      )
+        .then((response) => response.json())
+        .then((data) =>
+          this.setState({ movies: data.results, isLoading: false, isSearching: true, isDetails: false }),
+        );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   getDetails = async (id) => {
     // const id = e.currentTarget.value;
     try {
@@ -111,7 +125,7 @@ class Landing extends Component {
 
   render() {
     return this.state.isDetails ? (
-        <Details isLoading={this.state.isLoading} movie={this.state.movie} goBack={this.resetPopular}/>
+        <Details isLoading={this.state.isLoading} movie={this.state.movie} isSearching={this.state.isSearching} resetPopular={this.resetPopular} fetchSearch={this.fetchSearch} resetSearch={this.resetSearch} query={this.state.searchfield}/>
     ) : !this.state.isSearching ? (
       this.state.isLoading ? (
         <Spinner />

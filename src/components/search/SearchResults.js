@@ -5,7 +5,7 @@ const SearchResults = ({ searchfield, movies, isLoading, isSearching, reset, get
   return (
     <div>
       <Fragment>
-        <button onClick={reset}>Back to Search</button>
+        <button onClick={reset}>Back</button>
         <p>Showing results for '{searchfield}'</p>
         <Movies
           movies={movies}

@@ -8,8 +8,8 @@ function Details(props) {
 return <Fragment>
     <p>Title:</p>
 <p>{props.movie.title}</p>
-{/* Need to fix button so that when you click, it either goes back to home page or back to search results (depending on how you got to the Details) */}
-<Button onClick={props.goBack}>Back</Button>
+
+<Button onClick={() => props.fetchSearch(props.movie.id)}>Back</Button>
 </Fragment>;
 }
 

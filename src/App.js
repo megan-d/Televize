@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './index.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from '../src/components/layout/Navbar';
 import Footer from '../src/components/layout/Footer';
@@ -11,9 +11,7 @@ function App() {
     <div className='App'>
       <Router>
         <Navbar />
-        <Switch>
-          <Route path='/' component={Landing} exact />
-        </Switch>
+        <Landing />
         <Footer />
       </Router>
     </div>
