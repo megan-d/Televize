@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { key } from '../../config';
+import Details from './Details';
 
 function Movie(props) {
+  const [showDetails, toggleDetails] = useState(false);
+
   let movie;
   const fetchMovie = async (e) => {
     const id = e.currentTarget.value;
@@ -12,6 +15,7 @@ function Movie(props) {
       );
       const data = await response.json();
       movie = await { ...data };
+      toggleDetails({...showDetails, showDetails: true})
       console.log(movie);
     } catch (error) {
       console.error(error);
