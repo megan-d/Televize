@@ -28,6 +28,7 @@ function Movies(props) {
                 summary={movie.overview}
                 image={image}
                 getDetails={props.getDetails}
+                endLoading={props.endLoading}
               />
             );
           })}

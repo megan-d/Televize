@@ -11,6 +11,7 @@ function Searchbox(props) {
           type='search'
           placeholder='Search for a movie...'
           onChange={props.onSearchChangeHandler}
+          required
         ></input>
         <input type='submit' value='Submit'></input>
       </form>
