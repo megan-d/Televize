@@ -6,29 +6,28 @@ import Movie from './Movie';
 function Movies(props) {
   return props.isLoading ? (
     <Spinner />
-  ) : !props.isLoading && props.movies.status_code === 34 ? (
+  ) : props.isSearching && props.shows.length === 0 ? (
     <p>Your search did not return any results. Please try another search.</p>
   ) : (
     !props.isLoading &&
-    props.movies.length > 0 && (
+    props.shows.length > 0 && (
       <Fragment>
         
         <div className='cards'>
-          {props.movies.map((movie, index) => {
+          {props.shows.map((show, index) => {
             //Check to see if there's a poster image for the movie. If not, set the image to null so can display generic image.
             let image;
-            movie.poster_path
-              ? (image = `https://image.tmdb.org/t/p/w200/${movie.poster_path}`)
+            show.poster_path
+              ? (image = `https://image.tmdb.org/t/p/w200/${show.poster_path}`)
               : (image = 'none');
             return (
               <Movie
                 key={index}
-                id={movie.id}
-                title={movie.title}
-                summary={movie.overview}
+                id={show.id}
+                name={show.name}
+                summary={show.overview}
                 image={image}
                 getDetails={props.getDetails}
-                endLoading={props.endLoading}
               />
             );
           })}
@@ -40,7 +39,6 @@ function Movies(props) {
 
 Movies.propTypes = {
   isLoading: PropTypes.bool.isRequired,
-  movies: PropTypes.array.isRequired,
 };
 
 export default Movies;

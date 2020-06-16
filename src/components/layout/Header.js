@@ -1,16 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../assets/themoviedblogo.svg';
 
 function Header() {
-  const Header = styled.header`
-    background: red;
-    width: 100%;
-    margin: auto;
-    min-height: 10vh;
-    height: 10vh;
-  `;
+  
 
   return (
     <>

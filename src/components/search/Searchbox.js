@@ -9,7 +9,7 @@ function Searchbox(props) {
       <form onSubmit={props.onSubmit}>
         <input
           type='search'
-          placeholder='Search for a movie...'
+          placeholder='Search for a show...'
           onChange={props.onSearchChangeHandler}
           required
         ></input>
