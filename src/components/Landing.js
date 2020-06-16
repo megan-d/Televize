@@ -12,12 +12,22 @@ class Landing extends Component {
     this.state = {
       searchfield: '',
       movie: [],
-      movies: [],
-      action: [],
-      comedy: [],
-      adventure: [],
-      drama: [],
-      horror: [],
+      movies: {
+        search: [],
+        popular: [],
+        nowPlaying: [],
+        upcoming: [],
+        popularAction: [],
+        popularAdventure: [],
+        popularComedy: [],
+        popularThriller: [],
+      },
+      tv: {
+        search: [],
+        popular: [],
+        topRated: [],
+        airingToday: [],
+      },
       isLoading: true,
       isSearching: false,
       isDetails: false,
@@ -27,35 +37,52 @@ class Landing extends Component {
   componentDidMount() {
     try {
       this.getPopularMovies();
+      this.getPopularTv();
     } catch (error) {
       console.error(error);
     }
   }
 
-  getPopularMovies = () => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`,
+  getPopularTv = async () => {
+    await fetch(
+      `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`,
     )
       .then((response) => response.json())
       //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
       .then((data) =>
         this.setState({
-          movies: data.results,
-          action: data.results
-            .filter((el) => el.genre_ids.includes(28))
-            .slice(0, 4),
-          comedy: data.results
-            .filter((el) => el.genre_ids.includes(35))
-            .slice(0, 4),
-          adventure: data.results
-            .filter((el) => el.genre_ids.includes(12))
-            .slice(0, 4),
-          drama: data.results
-            .filter((el) => el.genre_ids.includes(18))
-            .slice(0, 4),
-          horror: data.results
-            .filter((el) => el.genre_ids.includes(27))
-            .slice(0, 4),
+          tv: {
+            popular: [...data.results.filter((el) => el.poster_path)],
+          },
+        }),
+      );
+  };
+
+  getPopularMovies = async () => {
+    await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&include_adult=false&page=1`,
+    )
+      .then((response) => response.json())
+      //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
+      .then((data) =>
+        this.setState({
+          movies: {
+            popular: [...data.results.filter((el) => el.poster_path)],
+            popularAction: [
+              ...data.results.filter((el) => {
+                return el.genre_ids.includes(28) && el.poster_path;
+              }),
+            ],
+            popularComedy: [
+              ...data.results.filter((el) => el.genre_ids.includes(35)),
+            ],
+            popularAdventure: [
+              ...data.results.filter((el) => el.genre_ids.includes(12)),
+            ],
+            popularThriller: [
+              ...data.results.filter((el) => el.genre_ids.includes(53)),
+            ],
+          },
           isLoading: false,
           isSearching: false,
           isDetails: false,
@@ -68,14 +95,21 @@ class Landing extends Component {
     this.setState({ searchfield: e.target.value });
   };
 
-  fetchSearch = (query) => {
+  fetchMovieSearch = (query) => {
     try {
       fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`,
       )
         .then((response) => response.json())
         .then((data) =>
-          this.setState({ movies: data.results, isLoading: false, isSearching: true }),
+          this.setState({
+            movies: {
+              //only include the ones that have a poster_path for image
+              search: [...data.results.filter((el) => el.poster_path)],
+            },
+            isLoading: false,
+            isSearching: true,
+          }),
         );
     } catch (error) {
       console.error(error);
@@ -85,7 +119,7 @@ class Landing extends Component {
   onSubmit = async (e) => {
     e.preventDefault();
     this.setState({ isLoading: true, isSearching: true });
-    await this.fetchSearch(this.state.searchfield);
+    await this.fetchMovieSearch(this.state.searchfield);
   };
 
   resetPopular = () => {
@@ -103,7 +137,12 @@ class Landing extends Component {
       )
         .then((response) => response.json())
         .then((data) =>
-          this.setState({ movies: data.results, isLoading: false, isSearching: true, isDetails: false }),
+          this.setState({
+            movies: data.results,
+            isLoading: false,
+            isSearching: true,
+            isDetails: false,
+          }),
         );
     } catch (error) {
       console.error(error);
@@ -125,7 +164,15 @@ class Landing extends Component {
 
   render() {
     return this.state.isDetails ? (
-        <Details isLoading={this.state.isLoading} movie={this.state.movie} isSearching={this.state.isSearching} resetPopular={this.resetPopular} fetchSearch={this.fetchSearch} resetSearch={this.resetSearch} query={this.state.searchfield}/>
+      <Details
+        isLoading={this.state.isLoading}
+        movie={this.state.movie}
+        isSearching={this.state.isSearching}
+        resetPopular={this.resetPopular}
+        fetchSearch={this.fetchMovieSearch}
+        resetSearch={this.resetSearch}
+        query={this.state.searchfield}
+      />
     ) : !this.state.isSearching ? (
       this.state.isLoading ? (
         <Spinner />
@@ -135,41 +182,41 @@ class Landing extends Component {
             onSearchChangeHandler={this.onSearchChangeHandler}
             onSubmit={this.onSubmit}
           />
-          <h2 className='genre-heading'>Popular Action Movies</h2>
+         <h2 className='genre-heading'>Popular Shows</h2>
           <Movies
-            movies={this.state.action}
+            movies={this.state.tv.popular}
+            isLoading={this.state.isLoading}
+            getDetails={this.getDetails}
+          />
+          {/* <h2 className='genre-heading'>Popular Action Movies</h2>
+          <Movies
+            movies={this.state.movies.popularAction}
             isLoading={this.state.isLoading}
             getDetails={this.getDetails}
           />
           <h2 className='genre-heading'>Popular Comedy Movies</h2>
           <Movies
-            movies={this.state.comedy}
+            movies={this.state.movies.popularComedy}
             isLoading={this.state.isLoading}
             getDetails={this.getDetails}
           />
           <h2 className='genre-heading'>Popular Adventure Movies</h2>
           <Movies
-            movies={this.state.adventure}
+            movies={this.state.movies.popularAdventure}
             isLoading={this.state.isLoading}
             getDetails={this.getDetails}
           />
-          <h2 className='genre-heading'>Popular Drama Movies</h2>
+          <h2 className='genre-heading'>Popular Thriller Movies</h2>
           <Movies
-            movies={this.state.drama}
+            movies={this.state.movies.popularThriller}
             isLoading={this.state.isLoading}
             getDetails={this.getDetails}
-          />
-          <h2 className='genre-heading'>Popular Horror Movies</h2>
-          <Movies
-            movies={this.state.horror}
-            isLoading={this.state.isLoading}
-            getDetails={this.getDetails}
-          />
+          /> */}
         </Fragment>
       )
     ) : (
       <SearchResults
-        movies={this.state.movies}
+        movies={this.state.movies.search}
         isLoading={this.state.isLoading}
         isSearching={this.state.isSearching}
         searchfield={this.state.searchfield}
