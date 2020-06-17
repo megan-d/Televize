@@ -104,9 +104,9 @@ class Landing extends Component {
     }
   };
 
-  resetSearch = (query) => {
+  resetSearch =  (query) => {
     try {
-      fetch(
+     fetch(
         `https://api.themoviedb.org/3/search/tv?api_key=${key}&language=en-US&page=1&query=${query}&include_adult=false`,
       )
         .then((response) => response.json())
@@ -148,6 +148,35 @@ class Landing extends Component {
     }
   };
 
+  findSimilar = (id) => {
+    try {
+        fetch(
+           `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${key}&language=en-US&page=1`,
+         )
+           .then((response) => response.json())
+           .then((data) =>
+             this.setState({
+               tv: {
+                 recSearch: [...data.results.filter((el) => {
+                   return el.poster_path && el.id !== 85648
+                 })],
+                 shows: [...data.results.filter((el) => {
+                   return el.poster_path && el.id !== 85648
+                 })],
+               },
+               isLoading: false,
+               isSearching: true,
+               isDetails: false,
+               isRec: true
+             }),
+           );
+       } catch (error) {
+         console.error(error);
+       }
+      
+
+}
+
   render() {
     return this.state.isDetails ? (
       <Details
@@ -158,6 +187,7 @@ class Landing extends Component {
         fetchSearch={this.fetchTvSearch}
         resetSearch={this.resetSearch}
         query={this.state.searchfield}
+        findSimilar={this.findSimilar}
       />
     ) : !this.state.isSearching ? (
       this.state.isLoading ? (
@@ -166,7 +196,7 @@ class Landing extends Component {
         <Fragment>
           <Jumbotron fluid style={{backgroundColor: '#2b5d6c'}}>
             <h1 className='text-center'>Your go-to TV reference</h1>
-            <p className='text-center'>Browse popular shows, view show recommendations, or search for a specific show</p>
+            <p className='text-center'>Browse popular shows, search for shows, and view recommendations</p>
             <Searchbox
             onSearchChangeHandler={this.onSearchChangeHandler}
             onSubmit={this.onSearchSubmit}
@@ -178,9 +208,21 @@ class Landing extends Component {
             shows={this.state.tv.popular}
             isLoading={this.state.isLoading}
             getDetails={this.getDetails}
+            findSimilar={this.findSimilar}
           />
         </Fragment>
       )
+    ) : this.state.isRec ? (
+        <SearchResults
+        shows={this.state.tv.recSearch}
+        isLoading={this.state.isLoading}
+        isSearching={this.state.isSearching}
+        isRec={this.state.isRec}
+        searchfield={this.state.searchfield}
+        reset={this.resetPopular}
+        getDetails={this.getDetails}
+        findSimilar={this.findSimilar}
+      />
     ) : (
       <SearchResults
         shows={this.state.tv.search}
@@ -189,6 +231,8 @@ class Landing extends Component {
         searchfield={this.state.searchfield}
         reset={this.resetPopular}
         getDetails={this.getDetails}
+        isRec={this.state.isRec}
+        findSimilar={this.findSimilar}
       />
     );
   }

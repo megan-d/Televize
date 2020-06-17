@@ -1,13 +1,31 @@
 import React, { Fragment } from 'react';
 import Movies from '../movies/Movies';
 import Button from 'react-bootstrap/Button';
+import Spinner from '../layout/Spinner';
 
-const SearchResults = ({ searchfield, shows, isLoading, isSearching, reset, getDetails }) => {
-  return (
+const SearchResults = ({
+  searchfield,
+  shows,
+  isLoading,
+  isSearching,
+  reset,
+  getDetails,
+  isRec,
+  findSimilar
+}) => {
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div>
       <Fragment>
-        <Button onClick={reset}>Back to Search</Button>
-        <p>Showing results for '{searchfield}'</p>
+        {/* If searching, back button should take you back to search results. If looking at recommendations, back button should take you back to details for movie. */}
+        {!isRec ? (
+          <Fragment>
+            <p>Showing results for '{searchfield}'</p>
+            <Button onClick={reset}>Back</Button>
+          </Fragment>
+        ) : <Button onClick={getDetails}>Back</Button>}
+
         <Movies
           shows={shows}
           isLoading={isLoading}
@@ -15,6 +33,7 @@ const SearchResults = ({ searchfield, shows, isLoading, isSearching, reset, getD
           isSearching={isSearching}
           getDetails={getDetails}
           reset={reset}
+          findSimilar={findSimilar}
         />
       </Fragment>
     </div>
