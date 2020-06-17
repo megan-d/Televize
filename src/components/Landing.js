@@ -13,16 +13,19 @@ class Landing extends Component {
     super();
     this.state = {
       searchfield: '',
+    recSearch: '',
       tv: {
         shows: [],
         show: [],
         search: [],
         popular: [],
+        recommendations: [],
         topRated: [],
         airingToday: [],
       },
       isLoading: true,
       isSearching: false,
+      isRec: false,
       isDetails: false,
     };
   }
@@ -55,9 +58,7 @@ class Landing extends Component {
       );
   };
 
-  onSearchChangeHandler = (e) => {
-    this.setState({ searchfield: e.target.value });
-  };
+  
 
   fetchTvSearch = async (query) => {
     try {
@@ -85,9 +86,13 @@ class Landing extends Component {
     }
   };
 
-  onSubmit = async (e) => {
+  onSearchChangeHandler = (e) => {
+    this.setState({ searchfield: e.target.value });
+  };
+
+  onSearchSubmit = async (e) => {
     e.preventDefault();
-    this.setState({ isLoading: true, isSearching: true });
+    this.setState({ isLoading: true, isSearching: true, isRec: false });
     await this.fetchTvSearch(this.state.searchfield);
   };
 
@@ -160,11 +165,11 @@ class Landing extends Component {
       ) : (
         <Fragment>
           <Jumbotron fluid style={{backgroundColor: '#2b5d6c'}}>
-            <h1 className='text-center'>Your go-to place for TV show information</h1>
-            <p className='text-center'>Browse popular shows or search for a specific show</p>
+            <h1 className='text-center'>Your go-to TV reference</h1>
+            <p className='text-center'>Browse popular shows, view show recommendations, or search for a specific show</p>
             <Searchbox
             onSearchChangeHandler={this.onSearchChangeHandler}
-            onSubmit={this.onSubmit}
+            onSubmit={this.onSearchSubmit}
           />
           </Jumbotron>
           

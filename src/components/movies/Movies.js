@@ -18,8 +18,12 @@ function Movies(props) {
             //Check to see if there's a poster image for the movie. If not, set the image to null so can display generic image.
             let image;
             show.poster_path
-              ? (image = `https://image.tmdb.org/t/p/w200/${show.poster_path}`)
+              ? (image = `https://image.tmdb.org/t/p/w185/${show.poster_path}`)
               : (image = 'none');
+              let background;
+              show.backdrop_path
+                ? (background = `https://image.tmdb.org/t/p/w1280/${show.backdrop_path}`)
+                : (background = 'none');
             return (
               <Movie
                 key={index}
@@ -27,6 +31,7 @@ function Movies(props) {
                 name={show.name}
                 summary={show.overview}
                 image={image}
+                background={background}
                 getDetails={props.getDetails}
               />
             );

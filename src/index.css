@@ -22,7 +22,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 7vh;
+  height: 10vh;
 }
 
 footer p {
@@ -45,11 +45,11 @@ footer p {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: grey;
+  background-color: #2b2929;
   width: 300px;
   height: 400px;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin: 1rem 0.3rem;
+  border-radius: 5px;
 }
 
 .movie-title {
@@ -80,10 +80,6 @@ footer p {
   color: black;
   width: 200px;
   height: 300px;
-}
-
-.poster {
-  height: 285;
 }
 
 .genre-heading {

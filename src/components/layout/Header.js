@@ -6,7 +6,7 @@ function Header() {
   
 
   return (
-    <>
+    <div>
       <Navbar bg='light'>
         {/* <img
           src={logo}
@@ -17,7 +17,7 @@ function Header() {
         /> */}
         <Navbar.Brand>TV Search</Navbar.Brand>
       </Navbar>
-    </>
+    </div>
   );
 }
 
