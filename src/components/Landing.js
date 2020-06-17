@@ -4,6 +4,8 @@ import Searchbox from './search/Searchbox';
 import SearchResults from './search/SearchResults';
 import Details from './movies/Details';
 import Spinner from './layout/Spinner';
+import Button from 'react-bootstrap/Button';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 import { key } from '../config';
 
 class Landing extends Component {
@@ -66,10 +68,13 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
-              //only include the ones that have a poster_path for image
-              search: [...data.results.filter((el) => el.poster_path)],
-              shows: [...data.results.filter((el) => el.poster_path)],
-              
+              //only include the ones that have a poster_path for image and don't include one with id of 85648 and decent popularity (to filter out certain unwanted movies)
+              search: [...data.results.filter((el) => {
+                return el.poster_path && el.id !== 85648 && el.popularity >= 6
+              })],
+              shows: [...data.results.filter((el) => {
+                return el.poster_path && el.id !== 85648 && el.popularity >= 6
+              })],
             },
             isLoading: false,
             isSearching: true,
@@ -103,8 +108,12 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
-              search: [...data.results.filter((el) => el.poster_path)],
-              shows: [...data.results.filter((el) => el.poster_path)],
+              search: [...data.results.filter((el) => {
+                return el.poster_path && el.id !== 85648
+              })],
+              shows: [...data.results.filter((el) => {
+                return el.poster_path && el.id !== 85648
+              })],
             },
             isLoading: false,
             isSearching: true,
@@ -125,7 +134,7 @@ class Landing extends Component {
       const data = await response.json();
       this.setState({
         tv: {
-            show: data,
+          show: data,
         },
         isDetails: true,
       });
@@ -150,10 +159,15 @@ class Landing extends Component {
         <Spinner />
       ) : (
         <Fragment>
-          <Searchbox
+          <Jumbotron fluid style={{backgroundColor: '#2b5d6c'}}>
+            <h1 className='text-center'>Your go-to place for TV show information</h1>
+            <p className='text-center'>Browse popular shows or search for a specific show</p>
+            <Searchbox
             onSearchChangeHandler={this.onSearchChangeHandler}
             onSubmit={this.onSubmit}
           />
+          </Jumbotron>
+          
           <h2 className='genre-heading'>Popular Shows</h2>
           <Movies
             shows={this.state.tv.popular}

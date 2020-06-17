@@ -18,6 +18,21 @@ html {
   height: 100%;
 }
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7vh;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+.tmdb-logo {
+  width: 100px;
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
