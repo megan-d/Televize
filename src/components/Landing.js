@@ -4,7 +4,6 @@ import Searchbox from './search/Searchbox';
 import SearchResults from './search/SearchResults';
 import Details from './movies/Details';
 import Spinner from './layout/Spinner';
-import Button from 'react-bootstrap/Button';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { key } from '../config';
 
@@ -46,8 +45,8 @@ class Landing extends Component {
       .then((data) =>
         this.setState({
           tv: {
-            popular: [...data.results.filter((el) => el.poster_path)],
-            shows: [...data.results.filter((el) => el.poster_path)],
+            popular: [...data.results.filter((el) => el.poster_path && el.backdrop_path)],
+            shows: [...data.results.filter((el) => el.poster_path  && el.backdrop_path)],
           },
           isLoading: false,
           isSearching: false,
@@ -71,10 +70,10 @@ class Landing extends Component {
             tv: {
               //only include the ones that have a poster_path for image and don't include one with id of 85648 and decent popularity (to filter out certain unwanted movies)
               search: [...data.results.filter((el) => {
-                return el.poster_path && el.id !== 85648 && el.popularity >= 6
+                return el.poster_path  && el.backdrop_path && el.id !== 85648 && el.popularity >= 6
               })],
               shows: [...data.results.filter((el) => {
-                return el.poster_path && el.id !== 85648 && el.popularity >= 6
+                return el.poster_path  && el.backdrop_path && el.id !== 85648 && el.popularity >= 6
               })],
             },
             isLoading: false,
@@ -116,10 +115,10 @@ class Landing extends Component {
           this.setState({
             tv: {
               search: [...data.results.filter((el) => {
-                return el.poster_path && el.id !== 85648 && el.popularity >= 6
+                return el.poster_path  && el.backdrop_path && el.id !== 85648 && el.popularity >= 6
               })],
               shows: [...data.results.filter((el) => {
-                return el.poster_path && el.id !== 85648 && el.popularity >= 6
+                return el.poster_path  && el.backdrop_path && el.id !== 85648 && el.popularity >= 6
               })],
             },
             isLoading: false,
@@ -162,10 +161,10 @@ class Landing extends Component {
              this.setState({
                tv: {
                  recommendations: [...data.results.filter((el) => {
-                   return el.poster_path && el.id !== 85648 && el.popularity >= 6
+                   return el.poster_path && el.backdrop_path && el.id !== 85648 && el.popularity >= 6
                  })],
                  shows: [...data.results.filter((el) => {
-                   return el.poster_path && el.id !== 85648 && el.popularity >= 6
+                   return el.poster_path  && el.backdrop_path && el.id !== 85648 && el.popularity >= 6
                  })],
                },
                isLoading: false,
@@ -189,10 +188,10 @@ class Landing extends Component {
                  this.setState({
                    tv: {
                      recommendations: [...data.results.filter((el) => {
-                       return el.poster_path && el.id !== 85648
+                       return el.poster_path  && el.backdrop_path && el.id !== 85648
                      })],
                      shows: [...data.results.filter((el) => {
-                       return el.poster_path && el.id !== 85648
+                       return el.poster_path  && el.backdrop_path && el.id !== 85648
                      })],
                    },
                    isLoading: false,

@@ -12,10 +12,6 @@ function Details(props) {
     position: relative;
   `;
 
-  const Background = styled.div`
-    opacity: 50%;
-  `;
-
   const DetailWrapper = styled.div`
     opacity: 80%;
     background: black;

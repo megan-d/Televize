@@ -11,7 +11,7 @@ const SearchResults = ({
   reset,
   getDetails,
   isRec,
-  findSimilar
+  findSimilar,
 }) => {
   return isLoading ? (
     <Spinner />
@@ -22,9 +22,11 @@ const SearchResults = ({
         {!isRec && searchfield ? (
           <Fragment>
             <p>Showing results for '{searchfield}'</p>
-            <Button onClick={reset}>Back Home</Button>
+            <Button onClick={reset}>Back</Button>
           </Fragment>
-        ) : <Button onClick={getDetails}>Back</Button>}
+        ) : (
+          <Button onClick={reset}>Back Home</Button>
+        )}
 
         <Movies
           shows={shows}
