@@ -34,6 +34,7 @@ function Movies(props) {
                 background={background}
                 getDetails={props.getDetails}
                 findSimilar={props.findSimilar}
+                findSimilarSearch={props.findSimilarSearch}
               />
             );
           })}

@@ -34,18 +34,18 @@ function Details(props) {
 
   return (
     <Fragment>
-      {//If searching and press back button, re-load the search with the same query. Otherwise, the back button reloads Landing and fetches popular shows.
+      {//If searching and press back button, re-load the search with the same query. Otherwise, the back button reloads Landing and fetches popular shows, unless it's loaded from a learn more button from findSimilar.
       props.isSearching ? (
         <Button onClick={() => props.resetSearch(props.query)}>
           Back to Search Results
         </Button>
       ) : (
-        <Button onClick={() => props.resetPopular()}>Back</Button>
+        <Button onClick={() => props.resetPopular()}>Back Home</Button>
       )}
       <Page>
         <DetailWrapper>
           <p>{props.show.name}</p>
-          <Button onClick={() => props.findSimilar(props.show.id)}>Find Similar Shows</Button>
+          {/* <Button onClick={() => props.findSimilar(props.show.id)}>Find Similar Shows</Button> */}
         </DetailWrapper>
       </Page>
     </Fragment>

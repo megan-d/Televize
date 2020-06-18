@@ -10,9 +10,18 @@ function Movie(props) {
         <Button variant='info' onClick={() => props.getDetails(props.id)}>
           Learn More
         </Button>
-        <Button variant='info' onClick={() => props.findSimilar(props.id)}>
-          Find Similar
-        </Button>
+        {props.isSearching ? (
+          <Button
+            variant='info'
+            onClick={() => props.findSimilarSearch(props.id)}
+          >
+            Find Similar Shows
+          </Button>
+        ) : (
+          <Button variant='info' onClick={() => props.findSimilar(props.id)}>
+            Find Similar Shows
+          </Button>
+        )}
       </div>
     </div>
   );

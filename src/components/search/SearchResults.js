@@ -19,10 +19,10 @@ const SearchResults = ({
     <div>
       <Fragment>
         {/* If searching, back button should take you back to search results. If looking at recommendations, back button should take you back to details for movie. */}
-        {!isRec ? (
+        {!isRec && searchfield ? (
           <Fragment>
             <p>Showing results for '{searchfield}'</p>
-            <Button onClick={reset}>Back</Button>
+            <Button onClick={reset}>Back Home</Button>
           </Fragment>
         ) : <Button onClick={getDetails}>Back</Button>}
 

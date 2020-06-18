@@ -13,7 +13,6 @@ class Landing extends Component {
     super();
     this.state = {
       searchfield: '',
-    recSearch: '',
       tv: {
         shows: [],
         show: [],
@@ -53,6 +52,7 @@ class Landing extends Component {
           isLoading: false,
           isSearching: false,
           isDetails: false,
+          isRec: false,
           searchfield: '',
         }),
       );
@@ -79,6 +79,7 @@ class Landing extends Component {
             },
             isLoading: false,
             isSearching: true,
+            isRec: false
           }),
         );
     } catch (error) {
@@ -104,6 +105,7 @@ class Landing extends Component {
     }
   };
 
+  //Reset the search for when searching and click on learn more and then back button is clicked and need to get back to search results.
   resetSearch =  (query) => {
     try {
      fetch(
@@ -114,15 +116,16 @@ class Landing extends Component {
           this.setState({
             tv: {
               search: [...data.results.filter((el) => {
-                return el.poster_path && el.id !== 85648
+                return el.poster_path && el.id !== 85648 && el.popularity >= 6
               })],
               shows: [...data.results.filter((el) => {
-                return el.poster_path && el.id !== 85648
+                return el.poster_path && el.id !== 85648 && el.popularity >= 6
               })],
             },
             isLoading: false,
             isSearching: true,
             isDetails: false,
+            isRec: false
           }),
         );
     } catch (error) {
@@ -142,6 +145,7 @@ class Landing extends Component {
           show: data,
         },
         isDetails: true,
+        isRec: false
       });
     } catch (error) {
       console.error(error);
@@ -157,15 +161,15 @@ class Landing extends Component {
            .then((data) =>
              this.setState({
                tv: {
-                 recSearch: [...data.results.filter((el) => {
-                   return el.poster_path && el.id !== 85648
+                 recommendations: [...data.results.filter((el) => {
+                   return el.poster_path && el.id !== 85648 && el.popularity >= 6
                  })],
                  shows: [...data.results.filter((el) => {
-                   return el.poster_path && el.id !== 85648
+                   return el.poster_path && el.id !== 85648 && el.popularity >= 6
                  })],
                },
                isLoading: false,
-               isSearching: true,
+               isSearching: false,
                isDetails: false,
                isRec: true
              }),
@@ -173,6 +177,33 @@ class Landing extends Component {
        } catch (error) {
          console.error(error);
        }
+    }
+
+       findSimilarSearch = (id) => {
+        try {
+            fetch(
+               `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${key}&language=en-US&page=1`,
+             )
+               .then((response) => response.json())
+               .then((data) =>
+                 this.setState({
+                   tv: {
+                     recommendations: [...data.results.filter((el) => {
+                       return el.poster_path && el.id !== 85648
+                     })],
+                     shows: [...data.results.filter((el) => {
+                       return el.poster_path && el.id !== 85648
+                     })],
+                   },
+                   isLoading: false,
+                   isSearching: true,
+                   isDetails: false,
+                   isRec: true
+                 }),
+               );
+           } catch (error) {
+             console.error(error);
+           }
       
 
 }
@@ -188,8 +219,9 @@ class Landing extends Component {
         resetSearch={this.resetSearch}
         query={this.state.searchfield}
         findSimilar={this.findSimilar}
+        findSimilarSearch={this.findSimilarSearch}
       />
-    ) : !this.state.isSearching ? (
+    ) : !this.state.isSearching && !this.state.isRec ? (
       this.state.isLoading ? (
         <Spinner />
       ) : (
@@ -209,12 +241,13 @@ class Landing extends Component {
             isLoading={this.state.isLoading}
             getDetails={this.getDetails}
             findSimilar={this.findSimilar}
+            findSimilarSearch={this.findSimilarSearch}
           />
         </Fragment>
       )
     ) : this.state.isRec ? (
         <SearchResults
-        shows={this.state.tv.recSearch}
+        shows={this.state.tv.recommendations}
         isLoading={this.state.isLoading}
         isSearching={this.state.isSearching}
         isRec={this.state.isRec}
@@ -222,6 +255,7 @@ class Landing extends Component {
         reset={this.resetPopular}
         getDetails={this.getDetails}
         findSimilar={this.findSimilar}
+        findSimilarSearch={this.findSimilarSearch}
       />
     ) : (
       <SearchResults
@@ -233,6 +267,7 @@ class Landing extends Component {
         getDetails={this.getDetails}
         isRec={this.state.isRec}
         findSimilar={this.findSimilar}
+        findSimilarSearch={this.findSimilarSearch}
       />
     );
   }
