@@ -15,7 +15,7 @@ function Header() {
           className='d-inline-block align-top'
           alt='React Bootstrap logo'
         /> */}
-        <Navbar.Brand><a href='/' className='site-title'>TV Search</a></Navbar.Brand>
+        <Navbar.Brand><a href='/' className='site-title'>TVSearch App</a></Navbar.Brand>
       </Navbar>
     </div>
   );

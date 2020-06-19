@@ -38,6 +38,10 @@ class Landing extends Component {
     }
   }
 
+  componentDidUpdate() {
+      window.scrollTo(0, 0);
+  }
+
   //Get the popular shows from API. Will run on mount for landing page.
   getPopularTv = async () => {
     await fetch(
@@ -210,7 +214,6 @@ class Landing extends Component {
         `https://api.themoviedb.org/3/tv/${id}?api_key=${key}&language=en-US`,
       );
       const data = await response.json();
-      console.log('rec details');
       this.setState({
         tv: {
           show: data,

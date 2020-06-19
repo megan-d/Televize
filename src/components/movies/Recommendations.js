@@ -29,10 +29,10 @@ const Recommendations = ({
         {searchfield ? (
           <Fragment>
             {/* <p>Showing results for '{searchfield}'</p> */}
-            <Button onClick={reset}>Back Home</Button>
+            <Button variant='dark' onClick={reset}>Back Home</Button>
           </Fragment>
         ) : (
-          <Button onClick={reset}>Back Home</Button>
+          <Button variant='dark' onClick={reset}>Back Home</Button>
         )}
 
         <Movies
