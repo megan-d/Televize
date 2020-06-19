@@ -16,12 +16,12 @@ function Details(props) {
   const DetailWrapper = styled.div`
     opacity: 80%;
     background: black;
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
     z-index: 5;
     position: absolute;
-    top: 25%;
-    left: 25%;
+    top: 10%;
+    left: 10%;
     border-radius: 3px;
     border: 1px solid slategrey;
     box-shadow: 0 0 20px rgba(0, 0, 0, 1);
@@ -45,7 +45,17 @@ function Details(props) {
       <Page>
         <DetailWrapper>
           <p>{props.show.name}</p>
-          {/* <Button onClick={() => props.findSimilar(props.show.id)}>Find Similar Shows</Button> */}
+          <p>{props.show.overview}</p>
+          <p className='details-heading'>Genres:</p>
+          {props.show.genres.map((show, index) => {
+              return <p key={index}>{show.name}</p>
+          })}
+          <p className='details-heading'># of Episodes:</p>
+          <p>{props.show.number_of_episodes}</p>
+          <p className='details-heading'># of Seasons:</p>
+          <p>{props.show.number_of_seasons}</p>
+           <p className='details-heading'>User Rating:</p>
+          <p>{props.show.vote_average}/10</p>
         </DetailWrapper>
       </Page>
     </Fragment>
