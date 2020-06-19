@@ -22,7 +22,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 10vh;
+  height: 5vh;
 }
 
 footer p {
@@ -66,6 +66,11 @@ footer p {
 
 .movie-title {
   font-size: 18px;
+}
+
+.poster {
+  height: 278px;
+  object-fit: cover;
 }
 
 .spinner {

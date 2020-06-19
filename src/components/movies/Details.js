@@ -10,6 +10,7 @@ function Details(props) {
     background-repeat: no-repeat;
     margin: 0 auto;
     position: relative;
+    z-index: 1;
   `;
 
   const DetailWrapper = styled.div`
@@ -30,16 +31,16 @@ function Details(props) {
     <Fragment>
       {//If searching and press back button, re-load the search with the same query. Otherwise, the back button reloads Landing and fetches popular shows, unless it's loaded from a learn more button from findSimilar.
       props.isSearching ? (
-        <Button variant='warning' onClick={() => props.resetSearch(props.query)}>
+        <Button style={{ maxWidth: '300px' }} variant='warning' onClick={() => props.resetSearch(props.query)}>
           Back to Search Results
         </Button>
       ) : props.isRec ? (
         //   On button click want to display SearchResults with the recommendations array
-        <Button variant='warning' onClick={() => props.resetRecommendations(props.show.id)}>
+        <Button style={{ maxWidth: '300px'}} variant='warning' onClick={() => props.resetRecommendations(props.show.id)}>
           Back to Recommendations
         </Button>
       ) : (
-        <Button variant='warning' onClick={() => props.resetPopular()}>Back Home</Button>
+        <Button style={{ maxWidth: '200px' }} variant='warning' onClick={() => props.resetPopular()}>Back Home</Button>
       )}
       <Page>
         <DetailWrapper>
