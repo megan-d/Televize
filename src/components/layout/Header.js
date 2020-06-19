@@ -7,7 +7,7 @@ function Header() {
 
   return (
     <div>
-      <Navbar bg='light'>
+      <Navbar style={{ backgroundColor: '#1d1c1c' }}>
         {/* <img
           src={logo}
           width='30'
@@ -15,7 +15,7 @@ function Header() {
           className='d-inline-block align-top'
           alt='React Bootstrap logo'
         /> */}
-        <Navbar.Brand>TV Search</Navbar.Brand>
+        <Navbar.Brand><a href='/' className='site-title'>TV Search</a></Navbar.Brand>
       </Navbar>
     </div>
   );

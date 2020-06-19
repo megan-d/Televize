@@ -11,7 +11,7 @@ function Searchbox(props) {
           onChange={props.onSearchChangeHandler}
           required
         ></input>
-        <input className='btn btn-danger' type='submit' value='Submit'></input>
+        <input className='btn btn-warning' type='submit' value='Submit'></input>
       </form>
     </Fragment>
   );

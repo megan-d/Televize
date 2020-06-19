@@ -33,8 +33,10 @@ function Movies(props) {
                 image={image}
                 background={background}
                 getDetails={props.getDetails}
+                getRecDetails={props.getRecDetails}
                 findSimilar={props.findSimilar}
                 findSimilarSearch={props.findSimilarSearch}
+                isRec={props.isRec}
               />
             );
           })}

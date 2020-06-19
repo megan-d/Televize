@@ -7,18 +7,26 @@ function Movie(props) {
       <img alt='show' src={props.image} className='poster'></img>
       <h1 className='movie-title'>{props.name}</h1>
       <div>
-        <Button variant='info' onClick={() => props.getDetails(props.id)}>
-          Learn More
-        </Button>
+        {/* if isRec is true, Learn More button should run a getRecDetails function that keeps isRec true. Then, will want back button to go back to the recommedations list  */}
+        {props.isRec ? (
+          <Button variant='warning' onClick={() => props.getRecDetails(props.id)}>
+            Learn More
+          </Button>
+        ) : (
+          <Button variant='warning' onClick={() => props.getDetails(props.id)}>
+            Learn More
+          </Button>
+        )}
+        
         {props.isSearching ? (
           <Button
-            variant='info'
+            variant='warning'
             onClick={() => props.findSimilarSearch(props.id)}
           >
             Find Similar Shows
           </Button>
         ) : (
-          <Button variant='info' onClick={() => props.findSimilar(props.id)}>
+          <Button variant='warning' onClick={() => props.findSimilar(props.id)}>
             Find Similar Shows
           </Button>
         )}

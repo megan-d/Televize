@@ -29,6 +29,17 @@ footer p {
   margin-bottom: 0;
 }
 
+.site-title {
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+}
+
+.site-title:hover {
+  color: white;
+  text-decoration: none;
+}
+
 .tmdb-logo {
   width: 100px;
 }
@@ -50,6 +61,7 @@ footer p {
   height: 400px;
   margin: 1rem 0.3rem;
   border-radius: 5px;
+  /* box-shadow: 0 5px rgba(80, 78, 78, 0.1); */
 }
 
 .movie-title {
@@ -84,5 +96,5 @@ footer p {
 
 .genre-heading {
   font-weight: 500;
-  font-size: 26px;
+  font-size: 20px;
 }

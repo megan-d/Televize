@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import styled from 'styled-components';
 
@@ -26,17 +27,20 @@ function Details(props) {
     box-shadow: 0 0 20px rgba(0, 0, 0, 1);
   `;
 
-  
-
   return (
     <Fragment>
       {//If searching and press back button, re-load the search with the same query. Otherwise, the back button reloads Landing and fetches popular shows, unless it's loaded from a learn more button from findSimilar.
       props.isSearching ? (
-        <Button onClick={() => props.resetSearch(props.query)}>
+        <Button variant='warning' onClick={() => props.resetSearch(props.query)}>
           Back to Search Results
         </Button>
+      ) : props.isRec ? (
+        //   On button click want to display SearchResults with the recommendations array
+        <Button variant='warning' onClick={() => props.resetRecommendations(props.show.id)}>
+          Back to Recommendations
+        </Button>
       ) : (
-        <Button onClick={() => props.resetPopular()}>Back Home</Button>
+        <Button variant='warning' onClick={() => props.resetPopular()}>Back Home</Button>
       )}
       <Page>
         <DetailWrapper>

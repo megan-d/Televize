@@ -3,7 +3,7 @@ import Movies from '../movies/Movies';
 import Button from 'react-bootstrap/Button';
 import Spinner from '../layout/Spinner';
 
-const SearchResults = ({
+const Recommendations = ({
   searchfield,
   shows,
   isLoading,
@@ -52,4 +52,4 @@ const SearchResults = ({
   );
 };
 
-export default SearchResults;
+export default Recommendations;
