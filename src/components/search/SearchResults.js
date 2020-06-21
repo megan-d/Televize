@@ -29,10 +29,24 @@ const SearchResults = ({
         {searchfield ? (
           <Fragment>
             {/* <p>Showing results for '{searchfield}'</p> */}
-            <Button variant='light' onClick={reset}>Back Home</Button>
+            <Button
+              size='sm'
+              style={{ maxWidth: '100px' }}
+              variant='outline-warning'
+              onClick={reset}
+            >
+              Back Home
+            </Button>
           </Fragment>
         ) : (
-          <Button variant='light' onClick={reset}>Back Home</Button>
+          <Button
+            size='sm'
+            style={{ maxWidth: '100px' }}
+            variant='outline-warning'
+            onClick={reset}
+          >
+            Back Home
+          </Button>
         )}
 
         <Movies

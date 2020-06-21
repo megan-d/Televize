@@ -4,6 +4,9 @@
   "engines": {
     "node": "12.18.0"
   },
+  "resolutions": {
+    "styled-components": "^5"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",

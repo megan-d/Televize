@@ -31,16 +31,33 @@ function Details(props) {
     <Fragment>
       {//If searching and press back button, re-load the search with the same query. Otherwise, the back button reloads Landing and fetches popular shows, unless it's loaded from a learn more button from findSimilar.
       props.isSearching ? (
-        <Button style={{ maxWidth: '300px' }} variant='warning' onClick={() => props.resetSearch(props.query)}>
-          Back to Search Results
+        <Button
+          size='sm'
+          style={{maxWidth: '100px'}}
+          variant='outline-warning'
+          onClick={() => props.resetSearch(props.query)}
+        >
+          Back
         </Button>
       ) : props.isRec ? (
         //   On button click want to display SearchResults with the recommendations array
-        <Button style={{ maxWidth: '300px'}} variant='warning' onClick={() => props.resetRecommendations(props.show.id)}>
-          Back to Recommendations
+        <Button
+          size='sm'
+          style={{maxWidth: '100px'}}
+          variant='outline-warning'
+          onClick={() => props.resetRecommendations(props.show.id)}
+        >
+          Back
         </Button>
       ) : (
-        <Button style={{ maxWidth: '200px' }} variant='warning' onClick={() => props.resetPopular()}>Back Home</Button>
+        <Button
+          size='sm'
+          style={{maxWidth: '100px'}}
+          variant='outline-warning'
+          onClick={() => props.resetPopular()}
+        >
+          Back Home
+        </Button>
       )}
       <Page>
         <DetailWrapper>
@@ -48,13 +65,13 @@ function Details(props) {
           <p>{props.show.overview}</p>
           <p className='details-heading'>Genres:</p>
           {props.show.genres.map((show, index) => {
-              return <p key={index}>{show.name}</p>
+            return <p key={index}>{show.name}</p>;
           })}
           <p className='details-heading'># of Episodes:</p>
           <p>{props.show.number_of_episodes}</p>
           <p className='details-heading'># of Seasons:</p>
           <p>{props.show.number_of_seasons}</p>
-           <p className='details-heading'>User Rating:</p>
+          <p className='details-heading'>User Rating:</p>
           <p>{props.show.vote_average}/10</p>
         </DetailWrapper>
       </Page>
