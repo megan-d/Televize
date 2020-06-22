@@ -71,6 +71,7 @@ footer p {
 .poster {
   height: 278px;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .spinner {
