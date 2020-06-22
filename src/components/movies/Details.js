@@ -13,9 +13,10 @@ function Details(props) {
     z-index: 1;
   `;
 
+    //Bring theme color in - defined in App.js
   const DetailWrapper = styled.div`
     opacity: 80%;
-    background: black;
+    background: ${(props) => props.theme.primary};
     width: 80%;
     margin: 0 auto;
     z-index: 5;
