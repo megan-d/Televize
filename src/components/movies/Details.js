@@ -1,34 +1,8 @@
 import React, { Fragment } from 'react';
 import Button from 'react-bootstrap/Button';
-import styled from 'styled-components';
 import Spinner from '../layout/Spinner';
 
 function Details(props) {
-  const Page = styled.div`
-    height: 80vh;
-    width: 60%;
-    background-image: url(https://image.tmdb.org/t/p/w1280/${props.show.backdrop_path});
-    background-repeat: no-repeat;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  `;
-
-  //Bring theme color in - defined in App.js
-  const DetailWrapper = styled.div`
-    opacity: 80%;
-    background: ${(props) => props.theme.primary};
-    width: 80%;
-    margin: 0 auto;
-    z-index: 5;
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    border-radius: 3px;
-    border: 1px solid slategrey;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
-  `;
-
   return props.isLoading ? (
     <Spinner />
   ) : (
@@ -63,8 +37,14 @@ function Details(props) {
           Back Home
         </Button>
       )}
-      <Page>
-        <DetailWrapper>
+
+      <div
+        className='detail-page'
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${props.show.backdrop_path})`,
+        }}
+      >
+        <div className='detail-wrapper'>
           <p>{props.show.name}</p>
           <p>{props.show.overview}</p>
           <p className='details-heading'>Genres:</p>
@@ -77,8 +57,8 @@ function Details(props) {
           <p>{props.show.number_of_seasons}</p>
           <p className='details-heading'>User Rating:</p>
           <p>{props.show.vote_average}/10</p>
-        </DetailWrapper>
-      </Page>
+        </div>
+      </div>
     </Fragment>
   );
 }
