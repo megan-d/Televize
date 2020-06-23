@@ -75,7 +75,7 @@ footer p {
 }
 
 .spinner {
-  border: 10px solid blue;
+  border: 10px solid #fdc108;
   border-top: 10px solid black;
   border-radius: 50%;
   width: 100px;

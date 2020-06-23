@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Button from 'react-bootstrap/Button';
 import styled from 'styled-components';
+import Spinner from '../layout/Spinner';
 
 function Details(props) {
   const Page = styled.div`
@@ -13,7 +14,7 @@ function Details(props) {
     z-index: 1;
   `;
 
-    //Bring theme color in - defined in App.js
+  //Bring theme color in - defined in App.js
   const DetailWrapper = styled.div`
     opacity: 80%;
     background: ${(props) => props.theme.primary};
@@ -28,13 +29,15 @@ function Details(props) {
     box-shadow: 0 0 20px rgba(0, 0, 0, 1);
   `;
 
-  return (
+  return props.isLoading ? (
+    <Spinner />
+  ) : (
     <Fragment>
       {//If searching and press back button, re-load the search with the same query. Otherwise, the back button reloads Landing and fetches popular shows, unless it's loaded from a learn more button from findSimilar.
       props.isSearching ? (
         <Button
           size='sm'
-          style={{maxWidth: '100px'}}
+          style={{ maxWidth: '100px' }}
           variant='outline-warning'
           onClick={() => props.resetSearch(props.query)}
         >
@@ -44,7 +47,7 @@ function Details(props) {
         //   On button click want to display SearchResults with the recommendations array
         <Button
           size='sm'
-          style={{maxWidth: '100px'}}
+          style={{ maxWidth: '100px' }}
           variant='outline-warning'
           onClick={() => props.resetRecommendations(props.show.id)}
         >
@@ -53,7 +56,7 @@ function Details(props) {
       ) : (
         <Button
           size='sm'
-          style={{maxWidth: '100px'}}
+          style={{ maxWidth: '100px' }}
           variant='outline-warning'
           onClick={() => props.resetPopular()}
         >
