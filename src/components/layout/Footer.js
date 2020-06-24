@@ -10,6 +10,7 @@ export default function Footer() {
           href='https://www.themoviedb.org/'
           target='_blank'
           rel='noopener noreferrer'
+          className='tmdb'
         >
           TMDb
         </a>
