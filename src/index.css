@@ -154,3 +154,7 @@ footer p {
   background-size: cover;
   background-position: top;
 }
+
+.highlight-text {
+  color: #fdc108;
+}
