@@ -21,17 +21,16 @@ const SearchResults = ({
   });
 
   return isLoading ? (
-    <Spinner />
+    <Spinner className = 'full-page'/>
   ) : (
-    <div>
-      <Fragment>
+    <div className = 'full-search-page'>
         {/* If searching, back button should take you back to search results. If looking at recommendations, back button should take you back to recommendations. */}
         {searchfield ? (
           <Fragment>
             {/* <p>Showing results for '{searchfield}'</p> */}
             <Button
               size='sm'
-              style={{ maxWidth: '100px' }}
+              style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
               variant='outline-warning'
               onClick={reset}
             >
@@ -41,7 +40,7 @@ const SearchResults = ({
         ) : (
           <Button
             size='sm'
-            style={{ maxWidth: '100px' }}
+            style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
             variant='outline-warning'
             onClick={reset}
           >
@@ -61,7 +60,6 @@ const SearchResults = ({
           resetRec={resetRec}
           findSimilar={findSimilar}
         />
-      </Fragment>
     </div>
   );
 };

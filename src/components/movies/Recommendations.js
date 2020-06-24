@@ -31,7 +31,7 @@ const Recommendations = ({
             {/* <p>Showing results for '{searchfield}'</p> */}
             <Button
               size='sm'
-              style={{ maxWidth: '100px' }}
+              style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
               variant='outline-warning'
               onClick={reset}
             >
@@ -41,7 +41,7 @@ const Recommendations = ({
         ) : (
           <Button
             size='sm'
-            style={{ maxWidth: '100px' }}
+            style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
             variant='outline-warning'
             onClick={reset}
           >

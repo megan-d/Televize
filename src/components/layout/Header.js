@@ -3,11 +3,8 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 
 function Header() {
-  
-
   return (
-    <div>
-      <Navbar style={{ backgroundColor: '#1d1c1c' }}>
+      <Navbar style={{ backgroundColor: '#1d1c1c' , height: '7vh'}}>
         {/* <img
           src={logo}
           width='30'
@@ -17,7 +14,6 @@ function Header() {
         /> */}
         <Navbar.Brand><a href='/' className='site-title'>TVSearch App</a></Navbar.Brand>
       </Navbar>
-    </div>
   );
 }
 

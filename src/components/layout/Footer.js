@@ -3,7 +3,7 @@ import tmdblogo from '../../assets/tmdblogo.svg';
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: '#2b2a2a' }} className='mt-auto'>
+    <footer style={{ backgroundColor: '#2b2a2a'}}>
       <p>
         Data and images provided by{' '}
         <a

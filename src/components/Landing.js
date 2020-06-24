@@ -33,14 +33,14 @@ class Landing extends Component {
   componentDidMount() {
     try {
       this.getPopularTv();
-      window.scrollTo(0, 0)
+      window.scrollTo(0, 0);
     } catch (error) {
       console.error(error);
     }
   }
 
   componentDidUpdate() {
-      window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }
 
   //Get the popular shows from API. Will run on mount for landing page.
@@ -90,7 +90,7 @@ class Landing extends Component {
                     el.poster_path &&
                     el.backdrop_path &&
                     el.id !== 85648 &&
-                    el.popularity >= 6
+                    el.popularity >= 5
                   );
                 }),
               ],
@@ -100,7 +100,7 @@ class Landing extends Component {
                     el.poster_path &&
                     el.backdrop_path &&
                     el.id !== 85648 &&
-                    el.popularity >= 6
+                    el.popularity >= 5
                   );
                 }),
               ],
@@ -152,7 +152,7 @@ class Landing extends Component {
                     el.poster_path &&
                     el.backdrop_path &&
                     el.id !== 85648 &&
-                    el.popularity >= 6
+                    el.popularity >= 5
                   );
                 }),
               ],
@@ -162,7 +162,7 @@ class Landing extends Component {
                     el.poster_path &&
                     el.backdrop_path &&
                     el.id !== 85648 &&
-                    el.popularity >= 6
+                    el.popularity >= 5
                   );
                 }),
               ],
@@ -180,12 +180,12 @@ class Landing extends Component {
 
   //Reset the recommendations for when click on learn more and then back button is clicked and need to get back to list of recommendations (in recommendations array)
   resetRecommendations = () => {
-            this.setState({
-              isLoading: false,
-              isDetails: false,
-              isRec: true,
-            })
-    };
+    this.setState({
+      isLoading: false,
+      isDetails: false,
+      isRec: true,
+    });
+  };
 
   //Get the details of a show by clicking Learn More button (and when not coming from recommendation)
   getDetails = async (id) => {
@@ -218,7 +218,7 @@ class Landing extends Component {
       this.setState({
         tv: {
           show: data,
-          recommendations: [...this.state.tv.recommendations]
+          recommendations: [...this.state.tv.recommendations],
         },
         isDetails: true,
         isRec: true,
@@ -243,7 +243,7 @@ class Landing extends Component {
                     el.poster_path &&
                     el.backdrop_path &&
                     el.id !== 85648 &&
-                    el.popularity >= 6
+                    el.popularity >= 5
                   );
                 }),
               ],
@@ -253,7 +253,7 @@ class Landing extends Component {
                     el.poster_path &&
                     el.backdrop_path &&
                     el.id !== 85648 &&
-                    el.popularity >= 6
+                    el.popularity >= 5
                   );
                 }),
               ],
@@ -280,12 +280,22 @@ class Landing extends Component {
             tv: {
               recommendations: [
                 ...data.results.filter((el) => {
-                  return el.poster_path && el.backdrop_path && el.id !== 85648;
+                  return (
+                    el.poster_path &&
+                    el.backdrop_path &&
+                    el.id !== 85648 &&
+                    el.popularity >= 5
+                  );
                 }),
               ],
               shows: [
                 ...data.results.filter((el) => {
-                  return el.poster_path && el.backdrop_path && el.id !== 85648;
+                  return (
+                    el.poster_path &&
+                    el.backdrop_path &&
+                    el.id !== 85648 &&
+                    el.popularity >= 5
+                  );
                 }),
               ],
             },
@@ -316,13 +326,14 @@ class Landing extends Component {
         query={this.state.searchfield}
         findSimilar={this.findSimilar}
         findSimilarSearch={this.findSimilarSearch}
+        className='grow'
       />
     ) : !this.state.isSearching && !this.state.isRec ? (
       this.state.isLoading ? (
         <Spinner />
       ) : (
-        <Fragment>
-          <Jumbotron fluid style={{ backgroundColor: '#2b2a2a'}}>
+        <Fragment >
+          <Jumbotron fluid style={{ backgroundColor: '#2b2a2a', height: '60vh' }}>
             <h1 className='text-center'>Your Go-To TV Reference</h1>
             <p className='text-center'>
               Browse shows, get details, and view recommendations
@@ -347,7 +358,7 @@ class Landing extends Component {
         </Fragment>
       )
     ) : this.state.isRec ? (
-      <Fragment>
+      <Fragment >
         <Searchbox
           onSearchChangeHandler={this.onSearchChangeHandler}
           onSubmit={this.onSearchSubmit}
@@ -367,7 +378,7 @@ class Landing extends Component {
         />
       </Fragment>
     ) : (
-      <Fragment>
+      <Fragment >
         <Searchbox
           onSearchChangeHandler={this.onSearchChangeHandler}
           onSubmit={this.onSearchSubmit}

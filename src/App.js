@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './index.css';
-import Header from '../src/components/layout/Header';
-import Footer from '../src/components/layout/Footer';
-import Landing from '../src/components/Landing';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import Landing from './components/Landing';
 
 function App() {
   return (
-    <div className='min-vh-100 d-flex flex-column'>
+    <Fragment >
       <Header />
       <Landing />
       <Footer />
-    </div>
+    </Fragment>
   );
 }
 
