@@ -312,29 +312,45 @@ class Landing extends Component {
 
   render() {
     return this.state.isDetails ? (
-      <Details
-        isLoading={this.state.isLoading}
-        show={this.state.tv.show}
-        rec={this.state.tv.recommendations}
-        isSearching={this.state.isSearching}
-        isRec={this.state.isRec}
-        resetPopular={this.resetPopular}
-        resetRecommendations={this.resetRecommendations}
-        resetRecs={this.resetRecommendations}
-        fetchSearch={this.fetchTvSearch}
-        resetSearch={this.resetSearch}
-        query={this.state.searchfield}
-        findSimilar={this.findSimilar}
-        findSimilarSearch={this.findSimilarSearch}
-        className='grow'
-      />
+      <Fragment>
+          <Searchbox
+          onSearchChangeHandler={this.onSearchChangeHandler}
+          onSubmit={this.resetSearch}
+        />
+        <Details
+          isLoading={this.state.isLoading}
+          show={this.state.tv.show}
+          rec={this.state.tv.recommendations}
+          isSearching={this.state.isSearching}
+          isRec={this.state.isRec}
+          resetPopular={this.resetPopular}
+          resetRecommendations={this.resetRecommendations}
+          resetRecs={this.resetRecommendations}
+          fetchSearch={this.fetchTvSearch}
+          resetSearch={this.resetSearch}
+          query={this.state.searchfield}
+          findSimilar={this.findSimilar}
+          findSimilarSearch={this.findSimilarSearch}
+          className='grow'
+        />
+      </Fragment>
     ) : !this.state.isSearching && !this.state.isRec ? (
       this.state.isLoading ? (
         <Spinner />
       ) : (
-        <Fragment >
-          <Jumbotron fluid style={{ backgroundColor: '#2b2a2a', height: '60vh', backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${tv})`}} className='jumbo'>
-            <h1 className='text-center banner-text'>Your <span className='highlight-text'>Go-To</span> TV Reference</h1>
+        <Fragment>
+          <Jumbotron
+            fluid
+            style={{
+              backgroundColor: '#2b2a2a',
+              height: '60vh',
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${tv})`,
+            }}
+            className='jumbo'
+          >
+            <h1 className='text-center banner-text'>
+              Your <span className='highlight-text'>Go-To</span> TV Reference
+            </h1>
             <p className='text-center banner-text subtitle'>
               Browse shows, get details, and view recommendations
             </p>
@@ -358,7 +374,7 @@ class Landing extends Component {
         </Fragment>
       )
     ) : this.state.isRec ? (
-      <Fragment >
+      <Fragment>
         <Searchbox
           onSearchChangeHandler={this.onSearchChangeHandler}
           onSubmit={this.onSearchSubmit}
@@ -378,7 +394,7 @@ class Landing extends Component {
         />
       </Fragment>
     ) : (
-      <Fragment >
+      <Fragment>
         <Searchbox
           onSearchChangeHandler={this.onSearchChangeHandler}
           onSubmit={this.onSearchSubmit}
