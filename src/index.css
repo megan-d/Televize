@@ -67,11 +67,16 @@ footer p {
   width: 100px;
 }
 
+.box-shadow {
+  box-shadow: 0 0 4px rgb(143, 141, 141);
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-evenly;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .card {

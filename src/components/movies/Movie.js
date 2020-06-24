@@ -17,7 +17,7 @@ function Movie(props) {
         style={{ maxWidth: '120px' }}
         variant='warning'
         onClick={() => props.getRecDetails(props.id)}
-        className='px-1 mb-3 mx-1'
+        className='box-shadow px-1 mb-3 mx-1'
       >
         Learn More
       </Button>
@@ -27,7 +27,7 @@ function Movie(props) {
         style={{ maxWidth: '120px' }}
         variant='warning'
         onClick={() => props.getDetails(props.id)}
-        className='px-1 mb-3 mx-1'
+        className='box-shadow px-1 mb-3 mx-1'
       >
         Learn More
       </Button>
@@ -39,7 +39,7 @@ function Movie(props) {
         style={{ maxWidth: '120px' }}
         variant='warning'
         onClick={() => props.findSimilarSearch(props.id)}
-        className='px-1 mb-3 mx-1'
+        className='box-shadow px-1 mb-3 mx-1'
       >
         Find Similar
       </Button>
@@ -49,7 +49,7 @@ function Movie(props) {
         style={{ maxWidth: '120px'}}
         variant='warning'
         onClick={() => props.findSimilar(props.id)}
-        className='px-1 mb-3 mx-1'
+        className='box-shadow px-1 mb-3 mx-1'
       >
         Find Similar
       </Button>
