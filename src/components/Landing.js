@@ -45,32 +45,68 @@ class Landing extends Component {
 
   //Get the popular shows from API. Will run on mount for landing page.
   getPopularTv = async () => {
-    await fetch(
-      `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`,
-    )
-      .then((response) => response.json())
-      //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
-      .then((data) =>
-        this.setState({
-          tv: {
-            popular: [
-              ...data.results.filter(
-                (el) => el.poster_path && el.backdrop_path,
-              ),
-            ],
-            shows: [
-              ...data.results.filter(
-                (el) => el.poster_path && el.backdrop_path,
-              ),
-            ],
-          },
-          isLoading: false,
-          isSearching: false,
-          isDetails: false,
-          isRec: false,
-          searchfield: '',
-        }),
-      );
+    try {
+      await fetch(
+        `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`,
+      )
+        .then((response) => response.json())
+        //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
+        .then((data) =>
+          this.setState({
+            tv: {
+              popular: [
+                ...data.results.filter(
+                  (el) => el.poster_path && el.backdrop_path,
+                ),
+              ],
+              shows: [
+                ...data.results.filter(
+                  (el) => el.poster_path && el.backdrop_path,
+                ),
+              ],
+            },
+            isLoading: false,
+            isSearching: false,
+            isDetails: false,
+            isRec: false,
+            searchfield: '',
+          }),
+        );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //Get the shows airing today from API. Will run on mount for landing page.
+  getAiringToday = async () => {
+    try {
+      await fetch(
+        `https://api.themoviedb.org/3/tv/airing_today?api_key=${key}&language=en-US&page=1`,
+      )
+        .then((response) => response.json())
+        //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
+        .then((data) =>
+          this.setState({
+            tv: {
+              airingToday: [
+                ...data.results.filter(
+                  (el) =>
+                    el.poster_path &&
+                    el.backdrop_path &&
+                    el.id !== 85648 &&
+                    el.popularity >= 4,
+                ),
+              ],
+            },
+            isLoading: false,
+            isSearching: false,
+            isDetails: false,
+            isRec: false,
+            searchfield: '',
+          }),
+        );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //Function that runs when a user performs a search for a show
@@ -313,7 +349,7 @@ class Landing extends Component {
   render() {
     return this.state.isDetails ? (
       <Fragment>
-          <Searchbox
+        <Searchbox
           onSearchChangeHandler={this.onSearchChangeHandler}
           onSubmit={this.resetSearch}
         />

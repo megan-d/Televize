@@ -21,9 +21,9 @@ const Recommendations = ({
   });
 
   return isLoading ? (
-    <Spinner />
+    <Spinner className= 'full-search-page'/>
   ) : (
-    <div>
+    <div className = 'full-search-page'>
       <Fragment>
         {/* If searching, back button should take you back to search results. If looking at recommendations, back button should take you back to recommendations. */}
         {searchfield ? (
