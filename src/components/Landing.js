@@ -335,7 +335,7 @@ class Landing extends Component {
         <Fragment >
           <Jumbotron fluid style={{ backgroundColor: '#2b2a2a', height: '60vh', backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${tv})`}} className='jumbo'>
             <h1 className='text-center banner-text'>Your <span className='highlight-text'>Go-To</span> TV Reference</h1>
-            <p className='text-center banner-text'>
+            <p className='text-center banner-text subtitle'>
               Browse shows, get details, and view recommendations
             </p>
             <Searchbox
