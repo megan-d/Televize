@@ -6,7 +6,7 @@ import Recommendations from './movies/Recommendations';
 import Details from './movies/Details';
 import Spinner from './layout/Spinner';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-// import tv from '../assets/tv.jpg';
+import tv from '../assets/stock-tv.jpg';
 import { key } from '../config';
 
 class Landing extends Component {
@@ -333,9 +333,9 @@ class Landing extends Component {
         <Spinner />
       ) : (
         <Fragment >
-          <Jumbotron fluid style={{ backgroundColor: '#2b2a2a', height: '60vh' }}>
-            <h1 className='text-center'>Your Go-To TV Reference</h1>
-            <p className='text-center'>
+          <Jumbotron fluid style={{ backgroundColor: '#2b2a2a', height: '60vh', backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${tv})`}} className='jumbo'>
+            <h1 className='text-center banner-text'>Your Go-To TV Reference</h1>
+            <p className='text-center banner-text'>
               Browse shows, get details, and view recommendations
             </p>
             <Searchbox
