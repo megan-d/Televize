@@ -42,6 +42,7 @@ footer {
   height: 5vh;
   margin-top: auto;
   flex-shrink: 0;
+  font-size: 12px;
 }
 
 footer p {
@@ -70,7 +71,7 @@ footer p {
 }
 
 .tmdb-logo {
-  width: 100px;
+  width: 90px;
 }
 
 .box-shadow {
