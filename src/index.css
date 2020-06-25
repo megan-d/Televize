@@ -78,6 +78,12 @@ footer p {
   box-shadow: 0 0 4px rgb(143, 141, 141);
 }
 
+hr {
+  border: 0.1px solid white;
+  width: 90%;
+  margin: 30px auto;
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -94,7 +100,7 @@ footer p {
   background-color: rgb(14, 13, 13);
   width: 185px;
   height: 400px;
-  margin: 1rem 10px;
+  margin: 1rem 20px;
   border-radius: 5px;
   box-shadow: 0 0 6px rgb(90, 89, 89);
 }

@@ -33,7 +33,8 @@ function Details(props) {
             size='sm'
             style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
             variant='outline-warning'
-            onClick={() => props.resetPopular()}
+            onClick={async () => await props.resetPopular()}
+            className='button-top-margin'
           >
             Back Home
           </Button>

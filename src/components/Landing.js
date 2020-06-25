@@ -33,6 +33,7 @@ class Landing extends Component {
   componentDidMount() {
     try {
       this.getPopularTv();
+    //   this.getAiringToday();
       window.scrollTo(0, 0);
     } catch (error) {
       console.error(error);
@@ -54,6 +55,7 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
+                // ...this.state.tv,
               popular: [
                 ...data.results.filter(
                   (el) => el.poster_path && el.backdrop_path,
@@ -87,6 +89,7 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
+                // ...this.state.tv,
               airingToday: [
                 ...data.results.filter(
                   (el) =>
@@ -94,6 +97,11 @@ class Landing extends Component {
                     el.backdrop_path &&
                     el.id !== 85648 &&
                     el.popularity >= 4,
+                ),
+              ],
+              shows: [
+                ...data.results.filter(
+                  (el) => el.poster_path && el.backdrop_path,
                 ),
               ],
             },
@@ -163,14 +171,24 @@ class Landing extends Component {
     await this.fetchTvSearch(this.state.searchfield);
   };
 
-  //Call the function to get popular shows (to be used when going back to landing page from anotehr page)
-  resetPopular = () => {
+  //Call the function to get popular shows and airing today shows (to be used when going back to landing page from anotehr page)
+  resetPopular = async () => {
     try {
-      this.getPopularTv();
+      await this.getPopularTv();
+    //   await this.getAiringToday();
     } catch (error) {
       console.error(error);
     }
   };
+
+  //Call the function to get popular shows and airing today shows (to be used when going back to landing page from anotehr page)
+//   resetAiringToday = async () => {
+//     try {
+//       await this.getAiringToday();
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
 
   //Reset the search for when searching and click on learn more and then back button is clicked and need to get back to search results.
   resetSearch = (query) => {
@@ -364,6 +382,7 @@ class Landing extends Component {
           resetRecs={this.resetRecommendations}
           fetchSearch={this.fetchTvSearch}
           resetSearch={this.resetSearch}
+          resetAiringToday={this.resetAiringToday}
           query={this.state.searchfield}
           findSimilar={this.findSimilar}
           findSimilarSearch={this.findSimilarSearch}
@@ -407,6 +426,18 @@ class Landing extends Component {
             findSimilar={this.findSimilar}
             findSimilarSearch={this.findSimilarSearch}
           />
+          {/* <hr></hr>
+          <h2 className='genre-heading'>Airing Today</h2>
+          <Movies
+            shows={this.state.tv.airingToday}
+            isLoading={this.state.isLoading}
+            isRec={this.state.isRec}
+            isSearching={this.state.isSearching}
+            getDetails={this.getDetails}
+            getRecDetails={this.getRecDetails}
+            findSimilar={this.findSimilar}
+            findSimilarSearch={this.findSimilarSearch}
+          /> */}
         </Fragment>
       )
     ) : this.state.isRec ? (

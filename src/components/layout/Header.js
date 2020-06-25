@@ -5,7 +5,7 @@ import tv from '../../assets/tv-logo.png';
 
 function Header() {
   return (
-    <Navbar style={{ backgroundColor: 'rgb(14, 13, 13)', height: '8vh' }}>
+    <Navbar style={{ backgroundColor: 'rgb(14, 13, 13)', minHeight: '8vh' }}>
       {/* <img
           src={logo}
           width='30'
