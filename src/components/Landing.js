@@ -152,6 +152,7 @@ class Landing extends Component {
             isLoading: false,
             isSearching: true,
             isRec: false,
+            isDetails: false,
           }),
         );
     } catch (error) {
@@ -369,7 +370,7 @@ class Landing extends Component {
       <Fragment>
         <Searchbox
           onSearchChangeHandler={this.onSearchChangeHandler}
-          onSubmit={this.resetSearch}
+          onSubmit={this.onSearchSubmit}
         />
         <Details
           isLoading={this.state.isLoading}
