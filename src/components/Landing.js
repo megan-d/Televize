@@ -72,7 +72,7 @@ class Landing extends Component {
             isDetails: false,
             isRec: false,
             searchfield: '',
-          }, this.getAiringToday),
+          }, () => this.getAiringToday()),
         );
     } catch (error) {
       console.log(error);
@@ -167,7 +167,6 @@ class Landing extends Component {
   resetPopular = async () => {
     try {
       await this.getPopularTv();
-    //   await this.getAiringToday();
     } catch (error) {
       console.error(error);
     }
@@ -192,6 +191,7 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
+                ...this.state.tv,
               search: [
                 ...data.results.filter((el) => {
                   return (
@@ -243,6 +243,7 @@ class Landing extends Component {
       const data = await response.json();
       this.setState({
         tv: {
+            ...this.state.tv,
           show: data,
         },
         isDetails: true,
@@ -263,8 +264,8 @@ class Landing extends Component {
       const data = await response.json();
       this.setState({
         tv: {
+            ...this.state.tv,
           show: data,
-          recommendations: [...this.state.tv.recommendations],
         },
         isDetails: true,
         isRec: true,
@@ -283,6 +284,7 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
+                ...this.state.tv,
               recommendations: [
                 ...data.results.filter((el) => {
                   return (
@@ -324,6 +326,7 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
+                ...this.state.tv,
               recommendations: [
                 ...data.results.filter((el) => {
                   return (
@@ -418,7 +421,7 @@ class Landing extends Component {
             findSimilar={this.findSimilar}
             findSimilarSearch={this.findSimilarSearch}
           />
-          {/* <hr></hr>
+          <hr></hr>
           <h2 className='genre-heading'>Airing Today</h2>
           <Movies
             shows={this.state.tv.airingToday}
@@ -429,7 +432,7 @@ class Landing extends Component {
             getRecDetails={this.getRecDetails}
             findSimilar={this.findSimilar}
             findSimilarSearch={this.findSimilarSearch}
-          /> */}
+          />
         </Fragment>
       )
     ) : this.state.isRec ? (
