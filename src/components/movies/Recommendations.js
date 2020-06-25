@@ -21,9 +21,15 @@ const Recommendations = ({
   });
 
   return isLoading ? (
-    <Spinner className= 'full-search-page'/>
+    <Spinner className='full-search-page' />
+  ) : shows.length === 0 ? (
+    <div className='full-search-page'>
+      <p className='text-center'>
+        No recommendations available. Please try another search.
+      </p>
+    </div>
   ) : (
-    <div className = 'full-search-page'>
+    <div className='full-search-page'>
       <Fragment>
         {/* If searching, back button should take you back to search results. If looking at recommendations, back button should take you back to recommendations. */}
         {searchfield ? (

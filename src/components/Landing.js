@@ -55,7 +55,7 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
-                // ...this.state.tv,
+                ...this.state.tv,
               popular: [
                 ...data.results.filter(
                   (el) => el.poster_path && el.backdrop_path,
@@ -72,7 +72,7 @@ class Landing extends Component {
             isDetails: false,
             isRec: false,
             searchfield: '',
-          }),
+          }, this.getAiringToday),
         );
     } catch (error) {
       console.log(error);
@@ -89,7 +89,7 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
-                // ...this.state.tv,
+                ...this.state.tv,
               airingToday: [
                 ...data.results.filter(
                   (el) =>
@@ -99,11 +99,11 @@ class Landing extends Component {
                     el.popularity >= 4,
                 ),
               ],
-              shows: [
-                ...data.results.filter(
-                  (el) => el.poster_path && el.backdrop_path,
-                ),
-              ],
+            //   shows: [
+            //     ...data.results.filter(
+            //       (el) => el.poster_path && el.backdrop_path,
+            //     ),
+            //   ],
             },
             isLoading: false,
             isSearching: false,
@@ -128,17 +128,8 @@ class Landing extends Component {
           this.setState({
             tv: {
               //only include the ones that have a poster_path for image and don't include one with id of 85648 and decent popularity (to filter out certain unwanted movies)
+              ...this.state.tv,
               search: [
-                ...data.results.filter((el) => {
-                  return (
-                    el.poster_path &&
-                    el.backdrop_path &&
-                    el.id !== 85648 &&
-                    el.popularity >= 5
-                  );
-                }),
-              ],
-              shows: [
                 ...data.results.filter((el) => {
                   return (
                     el.poster_path &&
