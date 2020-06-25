@@ -1,6 +1,5 @@
 @import-normalize;
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300&family=Saira+Condensed:wght@300;400;700&family=Saira:wght@400;700&display=swap');
 
 * {
   margin: 0px;
@@ -22,6 +21,25 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.details-font {
+  font-family: 'Saira', sans-serif;
+}
+
+.details-title {
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.details-list {
+  list-style: none;
+}
+
+.details-heading {
+  font-weight: 700;
 }
 
 html {
@@ -137,16 +155,16 @@ hr {
   min-height: 85vh;
 }
 
-.detail-box {
+.details-box {
   height: 90vh;
   width: 60%;
   background-repeat: no-repeat;
   margin: 0 auto 50px auto;
-  position: relative;
   z-index: 1;
+  position: relative;
 }
 
-.detail-wrapper {
+.details-wrapper {
   opacity: 80%;
   background-color: #1d1c1c;
   width: 80%;
@@ -155,7 +173,21 @@ hr {
   border-radius: 3px;
   border: 1px solid slategrey;
   box-shadow: 0 0 20px rgba(0, 0, 0, 1);
-  max-height: 100%;
+  max-height: 80vh;
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.details-left {
+  flex: 1;
+}
+
+.details-right {
+  flex: 1;
 }
 
 @keyframes spin {

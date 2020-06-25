@@ -33,7 +33,6 @@ class Landing extends Component {
   componentDidMount() {
     try {
       this.getPopularTv();
-    //   this.getAiringToday();
       window.scrollTo(0, 0);
     } catch (error) {
       console.error(error);
@@ -44,7 +43,7 @@ class Landing extends Component {
     window.scrollTo(0, 0);
   }
 
-  //Get the popular shows from API. Will run on mount for landing page.
+  //Get the popular shows and now airing shows from API. Run getAiringToday method as a callback to ensure state is already set with getPopularTv state update. This method will run on mount for landing page.
   getPopularTv = async () => {
     try {
       await fetch(
@@ -53,26 +52,29 @@ class Landing extends Component {
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
-          this.setState({
-            tv: {
+          this.setState(
+            {
+              tv: {
                 ...this.state.tv,
-              popular: [
-                ...data.results.filter(
-                  (el) => el.poster_path && el.backdrop_path,
-                ),
-              ],
-              shows: [
-                ...data.results.filter(
-                  (el) => el.poster_path && el.backdrop_path,
-                ),
-              ],
+                popular: [
+                  ...data.results.filter(
+                    (el) => el.poster_path && el.backdrop_path,
+                  ),
+                ],
+                shows: [
+                  ...data.results.filter(
+                    (el) => el.poster_path && el.backdrop_path,
+                  ),
+                ],
+              },
+              isLoading: false,
+              isSearching: false,
+              isDetails: false,
+              isRec: false,
+              searchfield: '',
             },
-            isLoading: false,
-            isSearching: false,
-            isDetails: false,
-            isRec: false,
-            searchfield: '',
-          }, () => this.getAiringToday()),
+            () => this.getAiringToday(),
+          ),
         );
     } catch (error) {
       console.log(error);
@@ -89,7 +91,7 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
-                ...this.state.tv,
+              ...this.state.tv,
               airingToday: [
                 ...data.results.filter(
                   (el) =>
@@ -99,11 +101,6 @@ class Landing extends Component {
                     el.popularity >= 4,
                 ),
               ],
-            //   shows: [
-            //     ...data.results.filter(
-            //       (el) => el.poster_path && el.backdrop_path,
-            //     ),
-            //   ],
             },
             isLoading: false,
             isSearching: false,
@@ -172,15 +169,6 @@ class Landing extends Component {
     }
   };
 
-  //Call the function to get popular shows and airing today shows (to be used when going back to landing page from anotehr page)
-//   resetAiringToday = async () => {
-//     try {
-//       await this.getAiringToday();
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-
   //Reset the search for when searching and click on learn more and then back button is clicked and need to get back to search results.
   resetSearch = (query) => {
     try {
@@ -191,7 +179,7 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
-                ...this.state.tv,
+              ...this.state.tv,
               search: [
                 ...data.results.filter((el) => {
                   return (
@@ -243,7 +231,7 @@ class Landing extends Component {
       const data = await response.json();
       this.setState({
         tv: {
-            ...this.state.tv,
+          ...this.state.tv,
           show: data,
         },
         isDetails: true,
@@ -264,7 +252,7 @@ class Landing extends Component {
       const data = await response.json();
       this.setState({
         tv: {
-            ...this.state.tv,
+          ...this.state.tv,
           show: data,
         },
         isDetails: true,
@@ -284,7 +272,7 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
-                ...this.state.tv,
+              ...this.state.tv,
               recommendations: [
                 ...data.results.filter((el) => {
                   return (
@@ -326,7 +314,7 @@ class Landing extends Component {
         .then((data) =>
           this.setState({
             tv: {
-                ...this.state.tv,
+              ...this.state.tv,
               recommendations: [
                 ...data.results.filter((el) => {
                   return (
@@ -377,7 +365,6 @@ class Landing extends Component {
           resetRecs={this.resetRecommendations}
           fetchSearch={this.fetchTvSearch}
           resetSearch={this.resetSearch}
-          resetAiringToday={this.resetAiringToday}
           query={this.state.searchfield}
           findSimilar={this.findSimilar}
           findSimilarSearch={this.findSimilarSearch}

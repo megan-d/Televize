@@ -41,24 +41,35 @@ function Details(props) {
         )}
 
         <div
-          className='detail-box'
+          className='details-box details-font'
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${props.show.backdrop_path})`,
           }}
         >
-          <div className='detail-wrapper'>
-            <p>{props.show.name}</p>
-            <p>{props.show.overview}</p>
-            <p className='details-heading'>Genres:</p>
-            {props.show.genres.map((show, index) => {
-              return <p key={index}>{show.name}</p>;
-            })}
-            <p className='details-heading'># of Episodes:</p>
-            <p>{props.show.number_of_episodes}</p>
-            <p className='details-heading'># of Seasons:</p>
-            <p>{props.show.number_of_seasons}</p>
-            <p className='details-heading'>User Rating:</p>
-            <p>{props.show.vote_average}/10</p>
+          <div className='details-wrapper details-font'>
+            <div className='details-left'>
+              <p className='details-title'>{props.show.name}</p>
+              <p className='details-overview'>{props.show.overview}</p>
+            </div>
+            <div className='details-right'>
+              <p className='details-heading'>Genres:</p>
+              <ul>
+                {props.show.genres.map((show, index) => {
+                  return (
+                    <li className='details-text details-list' key={index}>
+                      {show.name}
+                    </li>
+                  );
+                })}
+              </ul>
+
+              <p className='details-heading'># of Episodes:</p>
+              <p className='details-text'>{props.show.number_of_episodes}</p>
+              <p className='details-heading'># of Seasons:</p>
+              <p className='details-text'>{props.show.number_of_seasons}</p>
+              <p className='details-heading'>User Rating:</p>
+              <p className='details-text'>{props.show.vote_average}/10</p>
+            </div>
           </div>
         </div>
       </Fragment>
