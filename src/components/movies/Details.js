@@ -74,7 +74,7 @@ function Details(props) {
                 </p>
                 <p className='details-text'>
                   <span className='details-heading'>User Rating: </span>
-                  {props.show.vote_average}/10
+                  {props.show.vote_average} / 10
                 </p>
               </div>
             </div>

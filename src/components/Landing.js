@@ -20,7 +20,7 @@ class Landing extends Component {
         search: [],
         popular: [],
         recommendations: [],
-        topRated: [],
+        onAir: [],
         airingToday: [],
       },
       isLoading: true,
@@ -89,16 +89,53 @@ class Landing extends Component {
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
+          this.setState(
+            {
+              tv: {
+                ...this.state.tv,
+                airingToday: [
+                  ...data.results.filter(
+                    (el) =>
+                      el.poster_path &&
+                      el.backdrop_path &&
+                      el.id !== 85648 &&
+                      el.popularity >= 4,
+                  ),
+                ],
+              },
+              isLoading: false,
+              isSearching: false,
+              isDetails: false,
+              isRec: false,
+              searchfield: '',
+            },
+            () => this.getOnAir(),
+          ),
+        );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //Get the top rated shows from API. Will run on mount for landing page.
+  getOnAir = async () => {
+    try {
+      await fetch(
+        `https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1`,
+      )
+        .then((response) => response.json())
+        //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
+        .then((data) =>
           this.setState({
             tv: {
               ...this.state.tv,
-              airingToday: [
+              onAir: [
                 ...data.results.filter(
                   (el) =>
                     el.poster_path &&
                     el.backdrop_path &&
                     el.id !== 85648 &&
-                    el.popularity >= 4,
+                    el.popularity >= 50,
                 ),
               ],
             },
@@ -412,6 +449,18 @@ class Landing extends Component {
           <h2 className='genre-heading'>Airing Today</h2>
           <Movies
             shows={this.state.tv.airingToday}
+            isLoading={this.state.isLoading}
+            isRec={this.state.isRec}
+            isSearching={this.state.isSearching}
+            getDetails={this.getDetails}
+            getRecDetails={this.getRecDetails}
+            findSimilar={this.findSimilar}
+            findSimilarSearch={this.findSimilarSearch}
+          />
+          <hr></hr>
+          <h2 className='genre-heading'>Currently On Air</h2>
+          <Movies
+            shows={this.state.tv.onAir}
             isLoading={this.state.isLoading}
             isRec={this.state.isRec}
             isSearching={this.state.isSearching}
