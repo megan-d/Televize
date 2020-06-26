@@ -30,7 +30,7 @@ const SearchResults = ({
             {/* <p>Showing results for '{searchfield}'</p> */}
             <Button
               size='sm'
-              style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
+              style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
               variant='outline-warning'
               onClick={reset}
             >
@@ -40,7 +40,7 @@ const SearchResults = ({
         ) : (
           <Button
             size='sm'
-            style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
+            style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
             variant='outline-warning'
             onClick={reset}
           >

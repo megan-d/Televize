@@ -128,6 +128,15 @@ hr {
   margin: 0 auto;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .full-page {
   min-height: 88vh;
 }
@@ -140,9 +149,10 @@ hr {
   height: 90vh;
   width: 60%;
   background-repeat: no-repeat;
-  margin: 0 auto 50px auto;
+  margin: 20px auto 50px auto;
   z-index: 1;
   position: relative;
+  background-image: url(`https://image.tmdb.org/t/p/w1280/${props.show.backdrop_path}`);
 }
 
 .details-wrapper {
@@ -207,13 +217,49 @@ hr {
   margin-left: 10%;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.rating-circle-green {
+  width: 50px;
+  height: 53px;
+  border-radius: 50%;
+  font-size: 16px;
+  color: green;
+  border: 3px solid green;
+  background: white;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.rating-circle-red {
+  width: 50px;
+  height: 53px;
+  border-radius: 50%;
+  font-size: 16px;
+  color: red;
+  border: 3px solid red;
+  background: white;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.rating-circle-nr {
+  width: 50px;
+  height: 53px;
+  border-radius: 50%;
+  font-size: 16px;
+  color: black;
+  border: 3px solid black;
+  background: white;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .no-image {
@@ -237,4 +283,26 @@ hr {
 
 .highlight-text {
   color: #fdc108;
+}
+
+@media only screen and (max-width: 600px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .details-right {
+    display: block;
+    margin-left: 0px;
+  }
+
+  .details-box {
+    width: 90%;
+    background-image: none;
+  }
+
+  .rating-circle {
+    position: static;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
 }

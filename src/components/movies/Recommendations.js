@@ -24,6 +24,14 @@ const Recommendations = ({
     <Spinner className='full-search-page' />
   ) : shows.length === 0 ? (
     <div className='full-search-page'>
+      <Button
+              size='sm'
+              style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
+              variant='outline-warning'
+              onClick={reset}
+            >
+              Back Home
+            </Button>
       <p className='text-center'>
         No recommendations available. Please try another search.
       </p>
@@ -37,7 +45,7 @@ const Recommendations = ({
             {/* <p>Showing results for '{searchfield}'</p> */}
             <Button
               size='sm'
-              style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
+              style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
               variant='outline-warning'
               onClick={reset}
             >
@@ -47,7 +55,7 @@ const Recommendations = ({
         ) : (
           <Button
             size='sm'
-            style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
+            style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
             variant='outline-warning'
             onClick={reset}
           >

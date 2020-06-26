@@ -12,7 +12,7 @@ function Details(props) {
         props.isSearching ? (
           <Button
             size='sm'
-            style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
+            style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
             variant='outline-warning'
             onClick={() => props.resetSearch(props.query)}
           >
@@ -22,7 +22,7 @@ function Details(props) {
           //   On button click want to display SearchResults with the recommendations array
           <Button
             size='sm'
-            style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
+            style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
             variant='outline-warning'
             onClick={() => props.resetRecommendations(props.show.id)}
           >
@@ -31,7 +31,7 @@ function Details(props) {
         ) : (
           <Button
             size='sm'
-            style={{ maxWidth: '100px', marginLeft: '1.5rem' }}
+            style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
             variant='outline-warning'
             onClick={async () => await props.resetPopular()}
             className='button-top-margin'
@@ -48,6 +48,20 @@ function Details(props) {
         >
           <div className='details-wrapper details-font'>
             <p className='details-title'>{props.show.name}</p>
+            <div
+              className={
+                props.show.vote_average > 5
+                  ? 'rating-circle rating-circle-green'
+                  : !props.show.vote_average
+                  ? 'rating-cicle rating-circle-nr'
+                  : 'rating-circle rating-circle-red'
+              }
+            >
+              {props.show.vote_average
+                ? props.show.vote_average * 10 + '%'
+                : 'NR'}
+            </div>
+
             <div className='flex-container'>
               <div className='details-left'>
                 <p className='details-overview'>{props.show.overview}</p>
