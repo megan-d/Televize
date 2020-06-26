@@ -13,8 +13,9 @@ function Details(props) {
           <Button
             size='sm'
             style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
-            variant='outline-warning'
+            variant='outline-warning'  
             onClick={() => props.resetSearch(props.query)}
+            className='button-text'
           >
             Back
           </Button>
@@ -25,6 +26,7 @@ function Details(props) {
             style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
             variant='outline-warning'
             onClick={() => props.resetRecommendations(props.show.id)}
+            className='button-text'
           >
             Back
           </Button>
@@ -34,7 +36,7 @@ function Details(props) {
             style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
             variant='outline-warning'
             onClick={async () => await props.resetPopular()}
-            className='button-top-margin'
+            className='button-top-margin button-text'
           >
             Back Home
           </Button>
@@ -50,11 +52,11 @@ function Details(props) {
             <p className='details-title'>{props.show.name}</p>
             <div
               className={
-                props.show.vote_average > 5
+                props.show.vote_average > 7
                   ? 'rating-circle rating-circle-green'
                   : !props.show.vote_average
                   ? 'rating-cicle rating-circle-nr'
-                  : 'rating-circle rating-circle-red'
+                  : props.show.vote_average < 4 ? 'rating-circle rating-circle-red' : 'rating-circle rating-circle-yellow'
               }
             >
               {props.show.vote_average

@@ -29,10 +29,11 @@ const Recommendations = ({
               style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
               variant='outline-warning'
               onClick={reset}
+              className='button-text'
             >
               Back Home
             </Button>
-      <p className='text-center'>
+      <p className='text-center text-results'>
         No recommendations available. Please try another search.
       </p>
     </div>
@@ -48,6 +49,7 @@ const Recommendations = ({
               style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
               variant='outline-warning'
               onClick={reset}
+              className='button-text'
             >
               Back Home
             </Button>
@@ -58,6 +60,7 @@ const Recommendations = ({
             style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
             variant='outline-warning'
             onClick={reset}
+            className='button-text'
           >
             Back Home
           </Button>

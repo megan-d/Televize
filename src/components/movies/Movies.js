@@ -7,7 +7,7 @@ function Movies(props) {
   return props.isLoading ? (
     <Spinner />
   ) : props.isSearching && props.shows.length === 0 ? (
-    <p className='text-center'>Your search did not return any results. Please try another search.</p>
+    <p className='text-center text-results'>Your search did not return any results. Please try another search.</p>
   ) : (
     !props.isLoading &&
     props.shows.length > 0 && (

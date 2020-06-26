@@ -33,6 +33,7 @@ const SearchResults = ({
               style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
               variant='outline-warning'
               onClick={reset}
+              className='button-text'
             >
               Back Home
             </Button>
@@ -43,6 +44,7 @@ const SearchResults = ({
             style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
             variant='outline-warning'
             onClick={reset}
+            className='button-text'
           >
             Back Home
           </Button>

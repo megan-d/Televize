@@ -12,7 +12,7 @@ function Searchbox(props) {
           className='mr-2'
           required
         ></input>
-        <input className='btn btn-sm btn-warning' type='submit' value='Submit'></input>
+        <input className='btn btn-sm btn-warning button-text' type='submit' value='Submit'></input>
       </form>
   );
 }

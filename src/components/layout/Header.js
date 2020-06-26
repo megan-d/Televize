@@ -16,7 +16,7 @@ function Header() {
       <Navbar.Brand>
         <a href='/' className='site-title'>
           <img src={tv} alt='television' className='tv-logo'></img>
-          TellyVision
+          Televize
         </a>
       </Navbar.Brand>
     </Navbar>
