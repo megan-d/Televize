@@ -397,7 +397,7 @@ class Landing extends Component {
             />
           </Jumbotron>
 
-          <h2 className='genre-heading'>Popular Shows</h2>
+          <h2 className='genre-heading'>Popular</h2>
           <Movies
             shows={this.state.tv.popular}
             isLoading={this.state.isLoading}

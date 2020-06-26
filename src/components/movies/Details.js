@@ -47,28 +47,36 @@ function Details(props) {
           }}
         >
           <div className='details-wrapper details-font'>
-            <div className='details-left'>
-              <p className='details-title'>{props.show.name}</p>
-              <p className='details-overview'>{props.show.overview}</p>
-            </div>
-            <div className='details-right'>
-              <p className='details-heading'>Genres:</p>
-              <ul>
-                {props.show.genres.map((show, index) => {
-                  return (
-                    <li className='details-text details-list' key={index}>
-                      {show.name}
-                    </li>
-                  );
-                })}
-              </ul>
+            <p className='details-title'>{props.show.name}</p>
+            <div className='flex-container'>
+              <div className='details-left'>
+                <p className='details-overview'>{props.show.overview}</p>
+              </div>
+              <div className='details-right'>
+                <ul className='details-text'>
+                  <span className='details-heading'>Genres: </span>
+                  {props.show.genres.map((show, index) => {
+                    return (
+                      <li className='details-text details-list' key={index}>
+                        {show.name}
+                      </li>
+                    );
+                  })}
+                </ul>
 
-              <p className='details-heading'># of Episodes:</p>
-              <p className='details-text'>{props.show.number_of_episodes}</p>
-              <p className='details-heading'># of Seasons:</p>
-              <p className='details-text'>{props.show.number_of_seasons}</p>
-              <p className='details-heading'>User Rating:</p>
-              <p className='details-text'>{props.show.vote_average}/10</p>
+                <p className='details-text'>
+                  <span className='details-heading'>Number of Episodes: </span>
+                  {props.show.number_of_episodes}
+                </p>
+                <p className='details-text'>
+                  <span className='details-heading'>Number of Seasons: </span>
+                  {props.show.number_of_seasons}
+                </p>
+                <p className='details-text'>
+                  <span className='details-heading'>User Rating: </span>
+                  {props.show.vote_average}/10
+                </p>
+              </div>
             </div>
           </div>
         </div>

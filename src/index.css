@@ -23,25 +23,6 @@ body {
   flex-direction: column;
 }
 
-.details-font {
-  font-family: 'Saira', sans-serif;
-}
-
-.details-title {
-  font-weight: 700;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 22px;
-}
-
-.details-list {
-  list-style: none;
-}
-
-.details-heading {
-  font-weight: 700;
-}
-
 html {
   height: 100%;
 }
@@ -167,7 +148,7 @@ hr {
 .details-wrapper {
   opacity: 80%;
   background-color: #1d1c1c;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   z-index: 5;
   border-radius: 3px;
@@ -175,19 +156,55 @@ hr {
   box-shadow: 0 0 20px rgba(0, 0, 0, 1);
   max-height: 80vh;
   position: absolute;
-  top: 5%;
-  left: 10%;
+  top: 10%;
+  left: 5%;
   overflow: auto;
-  display: flex;
   justify-content: space-between;
 }
 
+.flex-container {
+  display: flex;
+}
+
 .details-left {
-  flex: 1;
+  flex: 2;
 }
 
 .details-right {
   flex: 1;
+}
+
+.details-text,
+.details-overview {
+  font-size: 16px;
+}
+
+.details-font {
+  font-family: 'Saira', sans-serif;
+}
+
+.details-title {
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.details-list {
+  list-style: none;
+}
+
+.details-heading {
+  color: #fdc108;
+  padding-right: 7px;
+}
+
+.details-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 10%;
 }
 
 @keyframes spin {
