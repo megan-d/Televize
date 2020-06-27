@@ -29,7 +29,7 @@ const Details = (props) => {
         props.isSearching ? (
           <Button
             size='sm'
-            style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
+            style={{ maxWidth: '100px', marginLeft: '35px', marginTop: '20px', marginBottom: '5px' }}
             variant='outline-warning'  
             onClick={() => props.resetSearch(props.query)}
             className='button-text'
@@ -40,7 +40,7 @@ const Details = (props) => {
           //   On button click want to display SearchResults with the recommendations array
           <Button
             size='sm'
-            style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
+            style={{ maxWidth: '100px', marginLeft: '35px', marginTop: '20px', marginBottom: '5px' }}
             variant='outline-warning'
             onClick={() => props.resetRecommendations(props.show.id)}
             className='button-text'
@@ -50,7 +50,7 @@ const Details = (props) => {
         ) : (
           <Button
             size='sm'
-            style={{ maxWidth: '100px', marginLeft: '1.5rem', marginTop: '20px' }}
+            style={{ maxWidth: '100px', marginLeft: '35px', marginTop: '20px', marginBottom: '5px' }}
             variant='outline-warning'
             onClick={async () => await props.resetPopular()}
             className='button-top-margin button-text'
@@ -73,7 +73,7 @@ const Details = (props) => {
                 props.show.vote_average > 7
                   ? 'rating-circle rating-circle-green'
                   : !props.show.vote_average
-                  ? 'rating-cicle rating-circle-nr'
+                  ? 'rating-circle rating-circle-nr'
                   : props.show.vote_average < 4 ? 'rating-circle rating-circle-red' : 'rating-circle rating-circle-yellow'
               }
             >
