@@ -50,6 +50,7 @@ function Details(props) {
         >
           <div className='details-wrapper details-font'>
             <p className='details-title'>{props.show.name}</p>
+            <hr className='details-hr'></hr>
             <div
               className={
                 props.show.vote_average > 7

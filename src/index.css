@@ -1,6 +1,8 @@
 @import-normalize;
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300&family=Saira+Condensed:wght@300;400;700&family=Saira:wght@400;700&display=swap');
 
+/* GLOBAL */
+
 * {
   margin: 0px;
   padding: 0px;
@@ -67,16 +69,18 @@ footer p {
   color: white;
 }
 
-.subtitle {
-  font-size: 24px;
-}
-
 .tmdb-logo {
   width: 90px;
 }
 
 .box-shadow {
   box-shadow: 0 0 4px rgb(143, 141, 141);
+}
+
+/* LANDING */
+
+.subtitle {
+  font-size: 24px;
 }
 
 hr {
@@ -147,7 +151,7 @@ hr {
 
 .details-box {
   height: 90vh;
-  width: 60%;
+  width: 75%;
   background-repeat: no-repeat;
   margin: 20px auto 50px auto;
   z-index: 1;
@@ -172,12 +176,18 @@ hr {
   justify-content: space-between;
 }
 
+.details-hr {
+  width: 25%;
+  margin: 2px auto 20px auto;
+}
+
 .flex-container {
   display: flex;
 }
 
 .details-left {
   flex: 2;
+  margin-left: 20px;
 }
 
 .details-right {
@@ -198,6 +208,7 @@ hr {
   text-align: center;
   text-transform: uppercase;
   font-size: 22px;
+  margin: 0;
 }
 
 .details-list {
@@ -308,6 +319,18 @@ hr {
   font-size: 15px;
 }
 
+@media only screen and (max-width: 768px) {
+  .rating-circle {
+    position: static;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .details-box {
+    width: 90%;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .flex-container {
     flex-direction: column;
@@ -318,14 +341,26 @@ hr {
     margin-left: 0px;
   }
 
-  .details-box {
-    width: 90%;
-    background-image: none;
+  .text-results {
+    padding: 20px;
   }
 
   .rating-circle {
     position: static;
     margin: 0 auto;
     margin-bottom: 20px;
+  }
+
+  .details-wrapper {
+    position: static;
+  }
+
+  .details-left {
+    margin-right: 20px;
+  }
+
+  .details-right {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
