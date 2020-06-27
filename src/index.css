@@ -153,8 +153,8 @@ hr {
   height: 90vh;
   width: 75%;
   background-repeat: no-repeat;
-  background-position: center center;
-  margin: 20px auto 50px auto;
+  background-position: top center;
+  margin: 5px auto 50px auto;
   z-index: 1;
   position: relative;
   background-image: url(`https://image.tmdb.org/t/p/w1280/${props.show.backdrop_path}`);
