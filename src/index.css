@@ -333,6 +333,9 @@ hr {
 
   .details-box {
     width: 90%;
+    margin: 40px auto 10px auto;
+    background-position: top center;
+    height: 80vh;
   }
 }
 
