@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Spinner from '../layout/Spinner';
 
-function Movie(props) {
+const Movie = (props) => {
   return props.isLoading ? (
     <Spinner />
   ) : (

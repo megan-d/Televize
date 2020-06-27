@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Searchbox(props) {
+const Searchbox = (props) => {
   return (
       <form className='text-center d-flex justify-content-center' onSubmit={props.onSubmit}>
         <input

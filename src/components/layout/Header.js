@@ -3,7 +3,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import tv from '../../assets/tv-logo.png';
 
-function Header() {
+const Header = () => {
   return (
     <Navbar style={{ backgroundColor: 'rgb(14, 13, 13)', minHeight: '8vh' }}>
       {/* <img

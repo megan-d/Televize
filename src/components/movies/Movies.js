@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
 import Movie from './Movie';
 
-function Movies(props) {
+const Movies = (props) => {
   return props.isLoading ? (
     <Spinner />
   ) : props.isSearching && props.shows.length === 0 ? (
