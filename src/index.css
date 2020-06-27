@@ -153,6 +153,7 @@ hr {
   height: 90vh;
   width: 75%;
   background-repeat: no-repeat;
+  background-position: center center;
   margin: 20px auto 50px auto;
   z-index: 1;
   position: relative;
@@ -208,7 +209,7 @@ hr {
   text-align: center;
   text-transform: uppercase;
   font-size: 22px;
-  margin: 0;
+  margin: 5px auto 0 auto;
 }
 
 .details-list {
@@ -326,8 +327,15 @@ hr {
     margin-bottom: 10px;
   }
 
+  .details-wrapper {
+    top: 5%;
+  }
+
   .details-box {
     width: 90%;
+    margin: 40px auto 10px auto;
+    background-position: top center;
+    height: 80vh;
   }
 }
 
@@ -352,7 +360,7 @@ hr {
   }
 
   .details-wrapper {
-    position: static;
+    min-height: 80vh;
   }
 
   .details-left {
@@ -362,5 +370,10 @@ hr {
   .details-right {
     margin-left: 20px;
     margin-right: 20px;
+  }
+
+  .details-box {
+    min-height: 90vh;
+    margin: 10px auto;
   }
 }

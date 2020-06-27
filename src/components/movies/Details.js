@@ -1,8 +1,25 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Spinner from '../layout/Spinner';
 
-function Details(props) {
+
+const Details = (props) => {
+
+    //Use hooks instead of media queries so backgroundImage is removed on mobile size
+    const [windowWidth, setWidth] = useState(window.innerWidth);
+    const breakpoint = 600;
+
+    useEffect(() => {
+        const handleWindowResize = () => setWidth(window.innerWidth);
+        
+        //Set event listener for window resize and update state to window width
+        window.addEventListener('resize', handleWindowResize);
+        //Return a function that removes the event listener
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        }
+    }, []);
+
   return props.isLoading ? (
     <Spinner className='full-page' />
   ) : (
@@ -45,7 +62,7 @@ function Details(props) {
         <div
           className='details-box details-font'
           style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${props.show.backdrop_path})`,
+            backgroundImage: windowWidth > breakpoint ? `url(https://image.tmdb.org/t/p/w1280/${props.show.backdrop_path})` : null,
           }}
         >
           <div className='details-wrapper details-font'>
