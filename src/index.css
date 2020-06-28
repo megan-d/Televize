@@ -77,10 +77,32 @@ footer p {
   box-shadow: 0 0 4px rgb(143, 141, 141);
 }
 
+.full-page {
+  min-height: 88vh;
+}
+
+.full-search-page {
+  min-height: 85vh;
+}
+
+.button-text {
+  font-size: 15px;
+}
+
+.text-results {
+  font-size: 18px;
+}
+
 /* LANDING */
 
 .subtitle {
   font-size: 24px;
+}
+
+.jumbo {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
 }
 
 hr {
@@ -89,6 +111,8 @@ hr {
   margin: 30px auto;
 }
 
+/* MOVIES */
+
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -96,6 +120,8 @@ hr {
   justify-content: center;
   margin-bottom: 20px;
 }
+
+/* MOVIE */
 
 .card {
   display: flex;
@@ -122,6 +148,8 @@ hr {
   border-radius: 5px;
 }
 
+/* SPINNER */
+
 .spinner {
   border: 10px solid #fdc108;
   border-top: 10px solid black;
@@ -141,13 +169,9 @@ hr {
   }
 }
 
-.full-page {
-  min-height: 88vh;
-}
+/* RECOMMENDATIONS */
 
-.full-search-page {
-  min-height: 85vh;
-}
+/* DETAILS */
 
 .details-box {
   height: 90vh;
@@ -289,38 +313,15 @@ hr {
   top: 10px;
 }
 
-.no-image {
-  background-color: white;
-  color: black;
-  width: 200px;
-  height: 300px;
-}
-
 .genre-heading {
   font-weight: 500;
   font-size: 22px;
   margin-left: 50px;
 }
 
-.jumbo {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
-}
-
-.highlight-text {
-  color: #fdc108;
-}
-
-.text-results {
-  font-size: 18px;
-}
-
-.button-text {
-  font-size: 15px;
-}
-
 @media only screen and (max-width: 768px) {
+  /* DETAILS */
+
   .rating-circle {
     position: static;
     margin: 0 auto;
@@ -337,6 +338,12 @@ hr {
 }
 
 @media only screen and (max-width: 600px) {
+  .text-results {
+    padding: 20px;
+  }
+
+  /* DETAILS */
+
   .flex-container {
     flex-direction: column;
   }
@@ -344,10 +351,6 @@ hr {
   .details-right {
     display: block;
     margin-left: 0px;
-  }
-
-  .text-results {
-    padding: 20px;
   }
 
   .rating-circle {
