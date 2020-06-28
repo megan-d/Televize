@@ -111,16 +111,6 @@ hr {
   margin: 30px auto;
 }
 
-/* MOVIES */
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
 /* MOVIE */
 
 .card {
@@ -147,29 +137,6 @@ hr {
   object-fit: cover;
   border-radius: 5px;
 }
-
-/* SPINNER */
-
-.spinner {
-  border: 10px solid #fdc108;
-  border-top: 10px solid black;
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  animation: spin 1s linear infinite;
-  margin: 0 auto;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* RECOMMENDATIONS */
 
 /* DETAILS */
 
