@@ -3,7 +3,15 @@ const router = express.Router();
 
 //ROUTE: GET api/shows/popular
 //DESCRIPTION: Get popular shows from TMDb to send to front end
-
+router.get('/api/shows/popular', async (req, res) => {
+    try {
+      await res.send('Popular route');
+    //   res.json(user);
+    } catch(err) {
+      console.err(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
 
 //ROUTE: GET api/shows/airing
 //DESCRIPTION: Get shows airing today from TMDb to send to front end
