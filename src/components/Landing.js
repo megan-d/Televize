@@ -47,10 +47,10 @@ class Landing extends Component {
   getPopularTv = async () => {
     try {
       await fetch(
-        `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`,
+        '/api/shows/popular',
       )
         .then((response) => response.json())
-        //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
+        //Filter the show results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
           this.setState(
             {
@@ -84,8 +84,7 @@ class Landing extends Component {
   getAiringToday = async () => {
     try {
       await fetch(
-        `https://api.themoviedb.org/3/tv/airing_today?api_key=${key}&language=en-US&page=1`,
-      )
+        '/api/shows/airing',)
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
