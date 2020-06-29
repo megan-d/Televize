@@ -88,8 +88,7 @@ class Landing extends Component {
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
-          this.setState(
-            {
+          this.setState({
               tv: {
                 ...this.state.tv,
                 airingToday: [
@@ -120,8 +119,7 @@ class Landing extends Component {
   getOnAir = async () => {
     try {
       await fetch(
-        `https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1`,
-      )
+        '/api/shows/onair',)
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>

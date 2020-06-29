@@ -52,10 +52,13 @@ app.get('/api/shows/airing', async (req, res) => {
 //DESCRIPTION: Get shows currently on air from TMDb to send to front end
 app.get('/api/shows/onair', async (req, res) => {
   try {
-    await res.send('Currenty on air route');
-    //   res.json(user);
+    await fetch(
+      `https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1`,
+    )
+      .then((response) => response.json())
+      .then(data => res.json(data));
   } catch (err) {
-    console.err(err.message);
+    console.log(err.message);
     res.status(500).send('Server Error');
   }
 });
