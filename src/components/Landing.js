@@ -7,7 +7,6 @@ import Details from './movies/Details';
 import Spinner from './layout/Spinner';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import tv from '../assets/stock-tv.jpg';
-import { key } from '../config';
 
 class Landing extends Component {
   constructor() {
@@ -46,7 +45,10 @@ class Landing extends Component {
   //Get the popular shows and now airing shows from API. Run getAiringToday method as a callback to ensure state is already set with getPopularTv state update. This method will run on mount for landing page.
   getPopularTv = async () => {
     try {
-      await fetch('/api/shows/popular')
+      await fetch('/api/shows/popular', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
         .then((response) => response.json())
         //Filter the show results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -81,7 +83,10 @@ class Landing extends Component {
   //Get the shows airing today from API. Will run on mount for landing page.
   getAiringToday = async () => {
     try {
-      await fetch('/api/shows/airing')
+      await fetch('/api/shows/airing', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -116,7 +121,10 @@ class Landing extends Component {
   //Get the top rated shows from API. Will run on mount for landing page.
   getOnAir = async () => {
     try {
-      await fetch('/api/shows/onair')
+      await fetch('/api/shows/onair', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -148,7 +156,10 @@ class Landing extends Component {
   //Function that runs when a user performs a search for a show
   fetchTvSearch = async (query) => {
     try {
-      await fetch(`/api/shows/${query}`)
+      await fetch(`/api/shows/${query}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -202,7 +213,10 @@ class Landing extends Component {
   //Reset the search for when searching and click on learn more and then back button is clicked and need to get back to search results.
   resetSearch = async (query) => {
     try {
-      await fetch(`/api/shows/${query}`)
+      await fetch(`/api/shows/${query}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -253,7 +267,10 @@ class Landing extends Component {
   //Get the details of a show by clicking Learn More button (and when not coming from recommendation)
   getDetails = async (id) => {
     try {
-      await fetch(`/api/show/${id}`)
+      await fetch(`/api/show/${id}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -274,7 +291,10 @@ class Landing extends Component {
   //Get the details of a show by clicking Learn More button when coming from recommendation (because will want to go back to recommendations page)
   getRecDetails = async (id) => {
     try {
-      await fetch(`/api/show/${id}`)
+      await fetch(`/api/show/${id}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -295,7 +315,10 @@ class Landing extends Component {
   //Find similar shows based on a given show id
   findSimilar = async (id) => {
     try {
-      await fetch(`/api/show/${id}/recommendations`)
+      await fetch(`/api/show/${id}/recommendations`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -337,7 +360,10 @@ class Landing extends Component {
   //Find similar shows based on a given id when actively searching
   findSimilarSearch = async (id) => {
     try {
-      await fetch(`/api/show/${id}/recommendations`)
+      await fetch(`/api/show/${id}/recommendations`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      })
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
