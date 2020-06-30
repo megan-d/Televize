@@ -7,8 +7,6 @@ const app = express();
 
 const key = process.env.API_KEY;
 
-app.get('/', (req, res) => res.send('API Running'));
-
 //To get access to req.body (no longer need body parser npm package)
 app.use(express.json());
 
@@ -16,7 +14,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
 
-//Define Routes
+//DEFINE ROUTES
 
 //ROUTE: GET api/shows/popular
 //DESCRIPTION: Get popular shows from TMDb to send to front end
@@ -24,6 +22,10 @@ app.get('/api/shows/popular', async (req, res) => {
   try {
     await fetch(
       `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`,
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      },
     )
       .then((response) => response.json())
       .then((data) => res.json(data));
@@ -39,6 +41,10 @@ app.get('/api/shows/airing', async (req, res) => {
   try {
     await fetch(
       `https://api.themoviedb.org/3/tv/airing_today?api_key=${key}&language=en-US&page=1`,
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      },
     )
       .then((response) => response.json())
       .then((data) => res.json(data));
@@ -54,6 +60,10 @@ app.get('/api/shows/onair', async (req, res) => {
   try {
     await fetch(
       `https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1`,
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      },
     )
       .then((response) => response.json())
       .then((data) => res.json(data));
@@ -65,11 +75,15 @@ app.get('/api/shows/onair', async (req, res) => {
 
 // ROUTE: GET api/shows/:query
 // DESCRIPTION: Get search results for show
-app.get('/api/shows/:query', async (req, res) => {
+app.get('/api/shows/', async (req, res) => {
   try {
-    const query = req.params.query;
+    const query = req.query.show;
     await fetch(
       `https://api.themoviedb.org/3/search/tv?api_key=${key}&language=en-US&page=1&query=${query}&include_adult=false`,
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      },
     )
       .then((response) => response.json())
       .then((data) => res.json(data));
@@ -81,11 +95,15 @@ app.get('/api/shows/:query', async (req, res) => {
 
 //ROUTE: GET api/shows/:id/recommendations
 //DESCRIPTION: Get recommendations from TMDb based on a specific show id to send to front end
-app.get('/api/show/:id/recommendations', async (req, res) => {
+app.get('/api/shows/:id/recommendations', async (req, res) => {
   try {
     const id = req.params.id;
     await fetch(
       `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${key}&language=en-US&page=1`,
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      },
     )
       .then((response) => response.json())
       .then((data) => res.json(data));
@@ -97,11 +115,15 @@ app.get('/api/show/:id/recommendations', async (req, res) => {
 
 //ROUTE: GET api/shows/:id
 //DESCRIPTION: Get details for specific show from TMDb to send to front end
-app.get('/api/show/:id', async (req, res) => {
+app.get('/api/shows/:id', async (req, res) => {
   try {
     const id = req.params.id;
     await fetch(
       `https://api.themoviedb.org/3/tv/${id}?api_key=${key}&language=en-US`,
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      },
     )
       .then((response) => response.json())
       .then((data) => res.json(data));

@@ -156,7 +156,7 @@ class Landing extends Component {
   //Function that runs when a user performs a search for a show
   fetchTvSearch = async (query) => {
     try {
-      await fetch(`/api/shows/${query}`, {
+      await fetch(`/api/shows/?show=${query}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -213,7 +213,7 @@ class Landing extends Component {
   //Reset the search for when searching and click on learn more and then back button is clicked and need to get back to search results.
   resetSearch = async (query) => {
     try {
-      await fetch(`/api/shows/${query}`, {
+      await fetch(`/api/shows/?show=${query}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -267,7 +267,7 @@ class Landing extends Component {
   //Get the details of a show by clicking Learn More button (and when not coming from recommendation)
   getDetails = async (id) => {
     try {
-      await fetch(`/api/show/${id}`, {
+      await fetch(`/api/shows/${id}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -291,7 +291,7 @@ class Landing extends Component {
   //Get the details of a show by clicking Learn More button when coming from recommendation (because will want to go back to recommendations page)
   getRecDetails = async (id) => {
     try {
-      await fetch(`/api/show/${id}`, {
+      await fetch(`/api/shows/${id}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -315,7 +315,7 @@ class Landing extends Component {
   //Find similar shows based on a given show id
   findSimilar = async (id) => {
     try {
-      await fetch(`/api/show/${id}/recommendations`, {
+      await fetch(`/api/shows/${id}/recommendations`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -360,7 +360,7 @@ class Landing extends Component {
   //Find similar shows based on a given id when actively searching
   findSimilarSearch = async (id) => {
     try {
-      await fetch(`/api/show/${id}/recommendations`, {
+      await fetch(`/api/shows/${id}/recommendations`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
