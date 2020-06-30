@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 dotenv.config();
 const app = express();
 
-const key = process.env.REACT_APP_APIKEY;
+const key = process.env.API_KEY;
 
 app.get('/', (req, res) => res.send('API Running'));
 
@@ -63,13 +63,25 @@ app.get('/api/shows/onair', async (req, res) => {
   }
 });
 
-//ROUTE: GET api/shows
-//DESCRIPTION: Get search results for show
-
+// ROUTE: GET api/shows/:query
+// DESCRIPTION: Get search results for show
+app.get('/api/shows/:query', async (req, res) => {
+  try {
+    const query = req.params.query;
+    await fetch(
+      `https://api.themoviedb.org/3/search/tv?api_key=${key}&language=en-US&page=1&query=${query}&include_adult=false`,
+    )
+      .then((response) => response.json())
+      .then((data) => res.json(data));
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 //ROUTE: GET api/shows/:id/recommendations
 //DESCRIPTION: Get recommendations from TMDb based on a specific show id to send to front end
-app.get('/api/shows/:id/recommendations', async (req, res) => {
+app.get('/api/show/:id/recommendations', async (req, res) => {
   try {
     const id = req.params.id;
     await fetch(
@@ -85,7 +97,7 @@ app.get('/api/shows/:id/recommendations', async (req, res) => {
 
 //ROUTE: GET api/shows/:id
 //DESCRIPTION: Get details for specific show from TMDb to send to front end
-app.get('/api/shows/:id', async (req, res) => {
+app.get('/api/show/:id', async (req, res) => {
   try {
     const id = req.params.id;
     await fetch(

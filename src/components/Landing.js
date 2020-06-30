@@ -148,10 +148,9 @@ class Landing extends Component {
   //Function that runs when a user performs a search for a show
   fetchTvSearch = async (query) => {
     try {
-      await fetch(
-        `https://api.themoviedb.org/3/search/tv?api_key=${key}&language=en-US&page=1&query=${query}&include_adult=false`,
-      )
+      await fetch(`/api/shows/${query}`)
         .then((response) => response.json())
+        //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
           this.setState({
             tv: {
@@ -201,12 +200,11 @@ class Landing extends Component {
   };
 
   //Reset the search for when searching and click on learn more and then back button is clicked and need to get back to search results.
-  resetSearch = (query) => {
+  resetSearch = async (query) => {
     try {
-      fetch(
-        `https://api.themoviedb.org/3/search/tv?api_key=${key}&language=en-US&page=1&query=${query}&include_adult=false`,
-      )
+      await fetch(`/api/shows/${query}`)
         .then((response) => response.json())
+        //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
           this.setState({
             tv: {
@@ -255,7 +253,7 @@ class Landing extends Component {
   //Get the details of a show by clicking Learn More button (and when not coming from recommendation)
   getDetails = async (id) => {
     try {
-      await fetch(`/api/shows/${id}`)
+      await fetch(`/api/show/${id}`)
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -276,7 +274,7 @@ class Landing extends Component {
   //Get the details of a show by clicking Learn More button when coming from recommendation (because will want to go back to recommendations page)
   getRecDetails = async (id) => {
     try {
-      await fetch(`/api/shows/${id}`)
+      await fetch(`/api/show/${id}`)
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -297,7 +295,7 @@ class Landing extends Component {
   //Find similar shows based on a given show id
   findSimilar = async (id) => {
     try {
-      await fetch(`/api/shows/${id}/recommendations`)
+      await fetch(`/api/show/${id}/recommendations`)
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -339,7 +337,7 @@ class Landing extends Component {
   //Find similar shows based on a given id when actively searching
   findSimilarSearch = async (id) => {
     try {
-      await fetch(`/api/shows/${id}/recommendations`)
+      await fetch(`/api/show/${id}/recommendations`)
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
