@@ -46,9 +46,7 @@ class Landing extends Component {
   //Get the popular shows and now airing shows from API. Run getAiringToday method as a callback to ensure state is already set with getPopularTv state update. This method will run on mount for landing page.
   getPopularTv = async () => {
     try {
-      await fetch(
-        '/api/shows/popular',
-      )
+      await fetch('/api/shows/popular')
         .then((response) => response.json())
         //Filter the show results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -83,12 +81,12 @@ class Landing extends Component {
   //Get the shows airing today from API. Will run on mount for landing page.
   getAiringToday = async () => {
     try {
-      await fetch(
-        '/api/shows/airing',)
+      await fetch('/api/shows/airing')
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
-          this.setState({
+          this.setState(
+            {
               tv: {
                 ...this.state.tv,
                 airingToday: [
@@ -118,8 +116,7 @@ class Landing extends Component {
   //Get the top rated shows from API. Will run on mount for landing page.
   getOnAir = async () => {
     try {
-      await fetch(
-        '/api/shows/onair',)
+      await fetch('/api/shows/onair')
         .then((response) => response.json())
         //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
@@ -257,20 +254,20 @@ class Landing extends Component {
 
   //Get the details of a show by clicking Learn More button (and when not coming from recommendation)
   getDetails = async (id) => {
-    // const id = e.currentTarget.value;
     try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${id}?api_key=${key}&language=en-US`,
-      );
-      const data = await response.json();
-      this.setState({
-        tv: {
-          ...this.state.tv,
-          show: data,
-        },
-        isDetails: true,
-        isRec: false,
-      });
+      await fetch(`/api/shows/${id}`)
+        .then((response) => response.json())
+        //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
+        .then((data) =>
+          this.setState({
+            tv: {
+              ...this.state.tv,
+              show: data,
+            },
+            isDetails: true,
+            isRec: false,
+          }),
+        );
     } catch (error) {
       console.error(error);
     }
@@ -278,31 +275,31 @@ class Landing extends Component {
 
   //Get the details of a show by clicking Learn More button when coming from recommendation (because will want to go back to recommendations page)
   getRecDetails = async (id) => {
-    // const id = e.currentTarget.value;
     try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${id}?api_key=${key}&language=en-US`,
-      );
-      const data = await response.json();
-      this.setState({
-        tv: {
-          ...this.state.tv,
-          show: data,
-        },
-        isDetails: true,
-        isRec: true,
-      });
+      await fetch(`/api/shows/${id}`)
+        .then((response) => response.json())
+        //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
+        .then((data) =>
+          this.setState({
+            tv: {
+              ...this.state.tv,
+              show: data,
+            },
+            isDetails: true,
+            isRec: true,
+          }),
+        );
     } catch (error) {
       console.error(error);
     }
   };
 
-  findSimilar = (id) => {
+  //Find similar shows based on a given show id
+  findSimilar = async (id) => {
     try {
-      fetch(
-        `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${key}&language=en-US&page=1`,
-      )
+      await fetch(`/api/shows/${id}/recommendations`)
         .then((response) => response.json())
+        //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
           this.setState({
             tv: {
@@ -339,12 +336,12 @@ class Landing extends Component {
     }
   };
 
-  findSimilarSearch = (id) => {
+  //Find similar shows based on a given id when actively searching
+  findSimilarSearch = async (id) => {
     try {
-      fetch(
-        `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${key}&language=en-US&page=1`,
-      )
+      await fetch(`/api/shows/${id}/recommendations`)
         .then((response) => response.json())
+        //Filter the movie results to inlclude those with specific genres and only include first 4 for each genre
         .then((data) =>
           this.setState({
             tv: {

@@ -26,7 +26,7 @@ app.get('/api/shows/popular', async (req, res) => {
       `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`,
     )
       .then((response) => response.json())
-      .then(data => res.json(data));
+      .then((data) => res.json(data));
   } catch (err) {
     console.log(err.message);
     res.status(500).send('Server Error');
@@ -41,7 +41,7 @@ app.get('/api/shows/airing', async (req, res) => {
       `https://api.themoviedb.org/3/tv/airing_today?api_key=${key}&language=en-US&page=1`,
     )
       .then((response) => response.json())
-      .then(data => res.json(data));
+      .then((data) => res.json(data));
   } catch (err) {
     console.log(err.message);
     res.status(500).send('Server Error');
@@ -56,18 +56,45 @@ app.get('/api/shows/onair', async (req, res) => {
       `https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1`,
     )
       .then((response) => response.json())
-      .then(data => res.json(data));
+      .then((data) => res.json(data));
   } catch (err) {
     console.log(err.message);
     res.status(500).send('Server Error');
   }
 });
 
-//ROUTE: GET api/shows/?show={query}
+//ROUTE: GET api/shows
 //DESCRIPTION: Get search results for show
 
-//ROUTE: GET api/shows/{id}/recommendations
-//DESCRIPTION: Get recommendations from TMDb to send to front end
 
-//ROUTE: GET api/shows/{id}
+//ROUTE: GET api/shows/:id/recommendations
+//DESCRIPTION: Get recommendations from TMDb based on a specific show id to send to front end
+app.get('/api/shows/:id/recommendations', async (req, res) => {
+  try {
+    const id = req.params.id;
+    await fetch(
+      `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${key}&language=en-US&page=1`,
+    )
+      .then((response) => response.json())
+      .then((data) => res.json(data));
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+//ROUTE: GET api/shows/:id
 //DESCRIPTION: Get details for specific show from TMDb to send to front end
+app.get('/api/shows/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    await fetch(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${key}&language=en-US`,
+    )
+      .then((response) => response.json())
+      .then((data) => res.json(data));
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
