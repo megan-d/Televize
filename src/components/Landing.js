@@ -42,6 +42,8 @@ class Landing extends Component {
     window.scrollTo(0, 0);
   }
 
+  
+
   //Get the popular shows and now airing shows from API. Run getAiringToday method as a callback to ensure state is already set with getPopularTv state update. This method will run on mount for landing page.
   getPopularTv = async () => {
     try {
