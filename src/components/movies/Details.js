@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Spinner from '../layout/Spinner';
 
@@ -118,5 +119,16 @@ const Details = (props) => {
     </div>
   );
 }
+
+Details.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  isSearching: PropTypes.bool.isRequired,
+  isRec: PropTypes.bool.isRequired,
+  show: PropTypes.object.isRequired,
+  resetSearch: PropTypes.func.isRequired,
+  resetPopular: PropTypes.func.isRequired,
+  resetRecommendations: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired,
+};
 
 export default Details;

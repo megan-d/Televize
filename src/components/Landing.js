@@ -15,7 +15,7 @@ class Landing extends Component {
       searchfield: '',
       tv: {
         shows: [],
-        show: [],
+        show: {},
         search: [],
         popular: [],
         recommendations: [],
@@ -418,11 +418,8 @@ class Landing extends Component {
           resetPopular={this.resetPopular}
           resetRecommendations={this.resetRecommendations}
           resetRecs={this.resetRecommendations}
-          fetchSearch={this.fetchTvSearch}
           resetSearch={this.resetSearch}
           query={this.state.searchfield}
-          findSimilar={this.findSimilar}
-          findSimilarSearch={this.findSimilarSearch}
           className='grow'
         />
       </Fragment>
@@ -435,7 +432,8 @@ class Landing extends Component {
             fluid
             style={{
               backgroundColor: '#2b2a2a',
-              height: '60vh',
+              height: '50vh',
+              minHeight: '300px',
               backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${tv})`,
             }}
             className='jumbo'
@@ -519,12 +517,12 @@ class Landing extends Component {
           shows={this.state.tv.search}
           isLoading={this.state.isLoading}
           isSearching={this.state.isSearching}
+          isRec={this.state.isRec}
           searchfield={this.state.searchfield}
           reset={this.resetPopular}
           resetRec={this.resetRecommendations}
           getDetails={this.getDetails}
           getRecDetails={this.getRecDetails}
-          isRec={this.state.isRec}
           findSimilar={this.findSimilar}
           findSimilarSearch={this.findSimilarSearch}
         />

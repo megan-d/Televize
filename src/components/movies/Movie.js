@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Spinner from '../layout/Spinner';
 
@@ -68,6 +69,16 @@ const Movie = (props) => {
       </div>
     </div>
   );
+};
+
+//id, name, summary, image, background
+Movie.propTypes = {
+  isRec: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  getDetails: PropTypes.func.isRequired,
+  getRecDetails: PropTypes.func.isRequired,
+  findSimilar: PropTypes.func.isRequired,
+  findSimilarSearch: PropTypes.func.isRequired,
 };
 
 export default Movie;

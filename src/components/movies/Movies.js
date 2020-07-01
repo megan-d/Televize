@@ -38,6 +38,7 @@ const Movies = (props) => {
                 findSimilar={props.findSimilar}
                 findSimilarSearch={props.findSimilarSearch}
                 isRec={props.isRec}
+                isLoading={props.isLoading}
               />
             );
           })}
@@ -49,6 +50,13 @@ const Movies = (props) => {
 
 Movies.propTypes = {
   isLoading: PropTypes.bool.isRequired,
+  isSearching: PropTypes.bool.isRequired,
+  isRec: PropTypes.bool.isRequired,
+  shows: PropTypes.array.isRequired,
+  getDetails: PropTypes.func.isRequired,
+  getRecDetails: PropTypes.func.isRequired,
+  findSimilar: PropTypes.func.isRequired,
+  findSimilarSearch: PropTypes.func.isRequired,
 };
 
 export default Movies;

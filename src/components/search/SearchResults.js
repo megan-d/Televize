@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Movies from '../movies/Movies';
 import Button from 'react-bootstrap/Button';
 import Spinner from '../layout/Spinner';
@@ -14,6 +15,7 @@ const SearchResults = ({
   resetRec,
   isRec,
   findSimilar,
+  findSimilarSearch
 }) => {
   //Have screen scroll to top after loading
   useEffect(() => {
@@ -61,9 +63,24 @@ const SearchResults = ({
           reset={reset}
           resetRec={resetRec}
           findSimilar={findSimilar}
+          findSimilarSearch={findSimilarSearch}
         />
     </div>
   );
+};
+
+SearchResults.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  isSearching: PropTypes.bool.isRequired,
+  isRec: PropTypes.bool.isRequired,
+  shows: PropTypes.array.isRequired,
+  searchfield: PropTypes.string.isRequired,
+  reset: PropTypes.func.isRequired,
+  resetRec: PropTypes.func.isRequired,
+  getDetails: PropTypes.func.isRequired,
+  getRecDetails: PropTypes.func.isRequired,
+  findSimilar: PropTypes.func.isRequired,
+  findSimilarSearch: PropTypes.func.isRequired,
 };
 
 export default SearchResults;
