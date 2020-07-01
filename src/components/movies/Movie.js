@@ -2,12 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Spinner from '../layout/Spinner';
+import styled from 'styled-components';
+
+const StyledCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(14, 13, 13);
+  width: 185px;
+  height: 400px;
+  margin: 1rem 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgb(90, 89, 89);
+`;
+
+const MovieTitle = styled.h1`
+  font-size: 20px;
+  text-align: center;
+`;
+
+const Poster = styled.img`
+  height: 278px;
+  width: 185px;
+  object-fit: cover;
+  border-radius: 5px;
+`;
 
 const Movie = (props) => {
   //Check to see if show name is 10 words or longer. If so, remove ending words and put ... so that name doesn't spill out of card boundary
   const nameArray = props.name.split(' ');
   let shortName;
-  if (nameArray.length >= 10) {
+  if (nameArray.length >= 8) {
     nameArray.splice(nameArray.length - 2, 2);
     shortName = nameArray.join(' ') + ' ...';
   } else {
@@ -17,9 +43,10 @@ const Movie = (props) => {
   return props.isLoading ? (
     <Spinner />
   ) : (
-    <div className='card background'>
-      <img alt='show' src={props.image} className='poster'></img>
-      <h1 className='movie-title'>{shortName}</h1>
+    <StyledCard>
+      <Poster alt='show' src={props.image}>
+      </Poster>
+      <MovieTitle>{shortName}</MovieTitle>
 
       <div>
         {/* if isRec is true, Learn More button should run a getRecDetails function that keeps isRec true. Then, will want back button to go back to the recommedations list  */}
@@ -67,7 +94,7 @@ const Movie = (props) => {
           </Button>
         )}
       </div>
-    </div>
+    </StyledCard>
   );
 };
 
