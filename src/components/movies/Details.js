@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const DetailsBox = styled.div`
   height: 90vh;
-  width: 90%;
+  width: 80%;
   background-repeat: no-repeat;
   background-position: top center;
   margin: 5px auto 50px auto;
