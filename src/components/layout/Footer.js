@@ -1,21 +1,35 @@
 import React from 'react';
 import tmdblogo from '../../assets/tmdblogo.svg';
+import styled from 'styled-components';
+
+const Logo = styled.img`
+  width: 90px;
+`;
+
+const FooterLink = styled.a`
+  text-decoration: none;
+  color: white;
+  margin-right: 20px;
+`;
+
+const StyledFooter = styled.footer`
+  background-color: #242323;
+`;
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: '#2b2a2a'}}>
+    <StyledFooter>
       <p>
         Data and images provided by{' '}
-        <a
+        <FooterLink
           href='https://www.themoviedb.org/'
           target='_blank'
           rel='noopener noreferrer'
-          className='tmdb'
         >
           TMDb
-        </a>
+        </FooterLink>
       </p>
-      <img src={tmdblogo} alt='logo' className='tmdb-logo'></img>
-    </footer>
+      <Logo src={tmdblogo} alt='logo'></Logo>
+    </StyledFooter>
   );
 }

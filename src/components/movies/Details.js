@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const DetailsBox = styled.div`
   height: 90vh;
-  width: 75%;
+  width: 90%;
   background-repeat: no-repeat;
   background-position: top center;
   margin: 5px auto 50px auto;
@@ -14,6 +14,10 @@ const DetailsBox = styled.div`
   position: relative;
   font-family: 'Saira', sans-serif;
   background-image: ${(props) => props.backdrop};
+  @media only screen and (max-width: 780px) {
+    min-height: 90vh;
+    margin: 10px auto;
+  }
 `;
 
 const DetailsWrapper = styled.div`
@@ -32,6 +36,12 @@ const DetailsWrapper = styled.div`
   overflow: auto;
   justify-content: space-between;
   font-family: 'Saira', sans-serif;
+  @media only screen and (max-width: 1000px) {
+    top: 5%;
+  }
+  @media only screen and (max-width: 780px) {
+    min-height: 70vh;
+  }
 `;
 
 const DetailsHorizontal = styled.hr`
@@ -42,11 +52,17 @@ const DetailsHorizontal = styled.hr`
 
 const FlexContainer = styled.div`
   display: flex;
+  @media only screen and (max-width: 780px) {
+    flex-direction: column;
+  }
 `;
 
 const DetailsLeft = styled.div`
   flex: 2;
   margin-left: 20px;
+  @media only screen and (max-width: 780px) {
+    margin-right: 20px;
+  }
 `;
 
 const DetailsRight = styled.div`
@@ -57,6 +73,11 @@ const DetailsRight = styled.div`
   align-items: flex-start;
   margin-left: 10%;
   margin-right: 5px;
+  @media only screen and (max-width: 780px) {
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 `;
 
 const RatingCircle = styled.div`
@@ -87,6 +108,11 @@ const RatingCircle = styled.div`
         : props.average < 4
         ? 'red'
         : '#db942c'};
+  @media only screen and (max-width: 1000px) {
+    position: static;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
 `;
 
 const DetailsUlText = styled.ul`

@@ -23,6 +23,12 @@ const HorizontalRule = styled.hr`
   margin: 30px auto;
 `;
 
+const GenreHeading = styled.h2`
+  font-weight: 500;
+  font-size: 22px;
+  margin-left: 50px;
+`;
+
 class Landing extends Component {
   constructor() {
     super();
@@ -469,7 +475,7 @@ class Landing extends Component {
             />
           </Jumbotron>
 
-          <h2 className='genre-heading'>Popular</h2>
+            <GenreHeading>Popular</GenreHeading>
           <Movies
             shows={this.state.tv.popular}
             isLoading={this.state.isLoading}
@@ -481,7 +487,7 @@ class Landing extends Component {
             findSimilarSearch={this.findSimilarSearch}
           />
           <HorizontalRule />
-          <h2 className='genre-heading'>Airing Today</h2>
+          <GenreHeading>Airing Today</GenreHeading>
           <Movies
             shows={this.state.tv.airingToday}
             isLoading={this.state.isLoading}
@@ -493,7 +499,7 @@ class Landing extends Component {
             findSimilarSearch={this.findSimilarSearch}
           />
           <HorizontalRule />
-          <h2 className='genre-heading'>Currently On Air</h2>
+          <GenreHeading>Currently On Air</GenreHeading>
           <Movies
             shows={this.state.tv.onAir}
             isLoading={this.state.isLoading}

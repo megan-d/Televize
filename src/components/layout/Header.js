@@ -1,26 +1,34 @@
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import Navbar from 'react-bootstrap/Navbar';
 import tv from '../../assets/tv-logo.png';
+
+const Logo = styled.img`
+  height: 30px;
+  margin-right: 10px;
+`;
+
+const SiteTitle = styled.a`
+  font-size: 28px;
+  color: white;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+`;
 
 const Header = () => {
   return (
     <Navbar style={{ backgroundColor: 'rgb(14, 13, 13)', minHeight: '8vh' }}>
-      {/* <img
-          src={logo}
-          width='30'
-          height='30'
-          className='d-inline-block align-top'
-          alt='React Bootstrap logo'
-        /> */}
       <Navbar.Brand>
-        <a href='/' className='site-title'>
-          <img src={tv} alt='television' className='tv-logo'></img>
+        <SiteTitle href='/'>
+          <Logo src={tv} alt='television'></Logo>
           Televize
-        </a>
+        </SiteTitle>
       </Navbar.Brand>
     </Navbar>
   );
-}
+};
 
 export default Header;

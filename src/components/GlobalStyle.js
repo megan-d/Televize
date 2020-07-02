@@ -14,10 +14,8 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  /* background: rgb(29, 28, 28); */
   background: rgb(14, 13, 13);
   color: rgb(240, 238, 238);
-  /* font-family: 'Lato', sans-serif; */
   font-family: 'Saira Condensed', sans-serif;
   height: 100%;
   display: flex;
@@ -28,14 +26,6 @@ html {
   height: 100%;
 }
 
-header {
-  height: 25px;
-}
-
-.tv-logo {
-  height: 30px;
-  margin-right: 10px;
-}
 
 footer {
   display: flex;
@@ -49,27 +39,6 @@ footer {
 
 footer p {
   margin-bottom: 0;
-}
-
-.tmdb {
-  text-decoration: none;
-  color: white;
-  margin-right: 20px;
-}
-
-.site-title {
-  font-size: 28px;
-  color: white;
-  text-decoration: none;
-}
-
-.site-title:hover {
-  text-decoration: none;
-  color: white;
-}
-
-.tmdb-logo {
-  width: 90px;
 }
 
 .box-shadow {
@@ -90,6 +59,12 @@ footer p {
 
 .text-results {
   font-size: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+  .text-results {
+    padding: 20px;
+  }
 }
 `;
 
