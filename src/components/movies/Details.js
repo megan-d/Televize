@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Spinner from '../layout/Spinner';
@@ -13,8 +13,7 @@ const DetailsBox = styled.div`
   z-index: 1;
   position: relative;
   font-family: 'Saira', sans-serif;
-  /* background-image: url('https://image.tmdb.org/t/p/w1280/$'+ ${(props) =>
-    props.backdrop}); */
+  background-image: ${(props) => props.backdrop};
 `;
 
 const DetailsWrapper = styled.div`
@@ -90,51 +89,32 @@ const RatingCircle = styled.div`
         : '#db942c'};
 `;
 
-/* // .details-text,
-// .details-overview {
-//   font-size: 16px;
-// }
+const DetailsUlText = styled.ul`
+  font-size: 16px;
+`;
+const DetailsList = styled.li`
+  list-style: none;
+  font-size: 16px;
+`;
 
-// .details-title {
-//   font-weight: 700;
-//   text-align: center;
-//   text-transform: uppercase;
-//   font-size: 22px;
-//   margin: 5px auto 0 auto;
-// }
+const DetailsText = styled.p`
+  font-size: 16px;
+`;
 
-// .details-list {
-//   list-style: none;
-// }
+const DetailsTitle = styled.p`
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 22px;
+  margin: 5px auto 0 auto;
+`;
 
-// .details-heading {
-//   color: #fdc108;
-//   padding-right: 7px;
-// }
-
-
-// .genre-heading {
-//   font-weight: 500;
-//   font-size: 22px;
-//   margin-left: 50px;
-// }  */
+const DetailsHeading = styled.span`
+  color: #fdc108;
+  padding-right: 7px;
+`;
 
 const Details = (props) => {
-  //Use hooks instead of media queries so backgroundImage is removed on mobile size
-  const [windowWidth, setWidth] = useState(window.innerWidth);
-  const breakpoint = 600;
-
-  useEffect(() => {
-    const handleWindowResize = () => setWidth(window.innerWidth);
-
-    //Set event listener for window resize and update state to window width
-    window.addEventListener('resize', handleWindowResize);
-    //Return a function that removes the event listener
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []);
-
   return props.isLoading ? (
     <Spinner className='full-page' />
   ) : (
@@ -190,16 +170,10 @@ const Details = (props) => {
         )}
 
         <DetailsBox
-          backdrop={props.show.backdrop_path}
-          style={{
-            backgroundImage:
-              windowWidth > breakpoint
-                ? `url(https://image.tmdb.org/t/p/w1280/${props.show.backdrop_path})`
-                : null,
-          }}
+          backdrop={`url(https://image.tmdb.org/t/p/w1280/${props.show.backdrop_path})`}
         >
           <DetailsWrapper>
-            <p className='details-title'>{props.show.name}</p>
+            <DetailsTitle>{props.show.name}</DetailsTitle>
             <DetailsHorizontal></DetailsHorizontal>
             <RatingCircle average={props.show.vote_average}>
               {props.show.vote_average
@@ -209,33 +183,29 @@ const Details = (props) => {
 
             <FlexContainer>
               <DetailsLeft>
-                <p className='details-overview'>{props.show.overview}</p>
+                <DetailsText>{props.show.overview}</DetailsText>
               </DetailsLeft>
 
               <DetailsRight>
-                <ul className='details-text'>
-                  <span className='details-heading'>Genres: </span>
+                <DetailsUlText>
+                  <DetailsHeading>Genres:</DetailsHeading>
                   {props.show.genres.map((show, index) => {
-                    return (
-                      <li className='details-text details-list' key={index}>
-                        {show.name}
-                      </li>
-                    );
+                    return <DetailsList key={index}>{show.name}</DetailsList>;
                   })}
-                </ul>
+                </DetailsUlText>
 
-                <p className='details-text'>
-                  <span className='details-heading'>Number of Episodes: </span>
+                <DetailsText>
+                  <DetailsHeading>Number of Episodes: </DetailsHeading>
                   {props.show.number_of_episodes}
-                </p>
-                <p className='details-text'>
-                  <span className='details-heading'>Number of Seasons: </span>
+                </DetailsText>
+                <DetailsText>
+                  <DetailsHeading>Number of Seasons: </DetailsHeading>
                   {props.show.number_of_seasons}
-                </p>
-                <p className='details-text'>
-                  <span className='details-heading'>User Rating: </span>
-                  {props.show.vote_average} / 10
-                </p>
+                </DetailsText>
+                <DetailsText>
+                  <DetailsHeading>User Rating: </DetailsHeading>
+                  {props.show.vote_average}
+                </DetailsText>
               </DetailsRight>
             </FlexContainer>
           </DetailsWrapper>

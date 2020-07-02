@@ -1,40 +1,6 @@
 @import-normalize;
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300&family=Saira+Condensed:wght@300;400;700&family=Saira:wght@400;700&display=swap');
 
-/* DETAILS */
-
-.details-text,
-.details-overview {
-  font-size: 16px;
-}
-
-.details-font {
-  font-family: 'Saira', sans-serif;
-}
-
-.details-title {
-  font-weight: 700;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 22px;
-  margin: 5px auto 0 auto;
-}
-
-.details-list {
-  list-style: none;
-}
-
-.details-heading {
-  color: #fdc108;
-  padding-right: 7px;
-}
-
-.genre-heading {
-  font-weight: 500;
-  font-size: 22px;
-  margin-left: 50px;
-}
-
 @media only screen and (max-width: 768px) {
   /* DETAILS */
 
