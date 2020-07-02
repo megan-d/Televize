@@ -17,6 +17,7 @@ const DetailsBox = styled.div`
   @media only screen and (max-width: 780px) {
     min-height: 90vh;
     margin: 10px auto;
+    width: 90%;
   }
 `;
 
