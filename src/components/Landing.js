@@ -7,6 +7,21 @@ import Details from './movies/Details';
 import Spinner from './layout/Spinner';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import tv from '../assets/stock-tv.jpg';
+import styled from 'styled-components';
+
+const Subtitle = styled.p`
+  font-size: 24px;
+`;
+
+const HighlightText = styled.span`
+  color: #fdc108;
+`;
+
+const HorizontalRule = styled.hr`
+  border: 0.1px solid white;
+  width: 90%;
+  margin: 30px auto;
+`;
 
 class Landing extends Component {
   constructor() {
@@ -41,8 +56,6 @@ class Landing extends Component {
   componentDidUpdate() {
     window.scrollTo(0, 0);
   }
-
-  
 
   //Get the popular shows and now airing shows from API. Run getAiringToday method as a callback to ensure state is already set with getPopularTv state update. This method will run on mount for landing page.
   getPopularTv = async () => {
@@ -437,15 +450,19 @@ class Landing extends Component {
               height: '50vh',
               minHeight: '300px',
               backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${tv})`,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+              backgroundPosition: 'top',
             }}
             className='jumbo'
           >
             <h1 className='text-center banner-text'>
-              Your <span className='highlight-text'>Go-To</span> TV Reference
+              Your <HighlightText>Go-To </HighlightText>TV Reference
             </h1>
-            <p className='text-center banner-text subtitle'>
+            <Subtitle className='text-center banner-text'>
               Browse shows, get details, and view recommendations
-            </p>
+            </Subtitle>
+
             <Searchbox
               onSearchChangeHandler={this.onSearchChangeHandler}
               onSubmit={this.onSearchSubmit}
@@ -463,7 +480,7 @@ class Landing extends Component {
             findSimilar={this.findSimilar}
             findSimilarSearch={this.findSimilarSearch}
           />
-          <hr></hr>
+          <HorizontalRule />
           <h2 className='genre-heading'>Airing Today</h2>
           <Movies
             shows={this.state.tv.airingToday}
@@ -475,7 +492,7 @@ class Landing extends Component {
             findSimilar={this.findSimilar}
             findSimilarSearch={this.findSimilarSearch}
           />
-          <hr></hr>
+          <HorizontalRule />
           <h2 className='genre-heading'>Currently On Air</h2>
           <Movies
             shows={this.state.tv.onAir}
