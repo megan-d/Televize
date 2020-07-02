@@ -13,6 +13,8 @@ const DetailsBox = styled.div`
   z-index: 1;
   position: relative;
   font-family: 'Saira', sans-serif;
+  /* background-image: url('https://image.tmdb.org/t/p/w1280/$'+ ${(props) =>
+    props.backdrop}); */
 `;
 
 const DetailsWrapper = styled.div`
@@ -188,6 +190,7 @@ const Details = (props) => {
         )}
 
         <DetailsBox
+          backdrop={props.show.backdrop_path}
           style={{
             backgroundImage:
               windowWidth > breakpoint
