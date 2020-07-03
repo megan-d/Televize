@@ -22,7 +22,8 @@ const DetailsBox = styled.div`
 `;
 
 const DetailsWrapper = styled.div`
-  opacity: 80%;
+  opacity: 0.8;
+  -webkit-opacity: 0.8;
   background-color: #1d1c1c;
   width: 80%;
   margin: 0 auto;

@@ -61,6 +61,10 @@ footer p {
   font-size: 18px;
 }
 
+img:-moz-loading {
+    visibility: hidden;
+}
+
 @media only screen and (max-width: 600px) {
   .text-results {
     padding: 20px;
