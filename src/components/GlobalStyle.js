@@ -61,6 +61,11 @@ footer p {
   font-size: 18px;
 }
 
+input {
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
 input:focus{
   outline: none;
   border: 2px solid #fdc108;
