@@ -24,7 +24,6 @@ const Spinner = () => {
     <div className='full-page'>
       <StyledSpinner />
     </div>
-      
   );
 };
 
