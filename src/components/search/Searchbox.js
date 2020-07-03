@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const Searchbox = (props) => {
   return (
-      <form className='text-center d-flex justify-content-center' onSubmit={props.onSubmit}>
+      <form className='text-center d-flex justify-content-center mt-2' onSubmit={props.onSubmit}>
         <input
           type='search'
-          style={{verticalAlign: 'middle'}}
+          style={{verticalAlign: 'middle', paddingLeft: '5px'}}
           placeholder='Search for a show...'
           onChange={props.onSearchChangeHandler}
           className='mr-2'

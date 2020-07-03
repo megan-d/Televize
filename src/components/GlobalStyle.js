@@ -61,6 +61,11 @@ footer p {
   font-size: 18px;
 }
 
+input:focus{
+  outline: none;
+  border: 2px solid #fdc108;
+}
+
 img:-moz-loading {
     visibility: hidden;
 }
