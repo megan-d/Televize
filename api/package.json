@@ -4,9 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server",
-    "dev": "concurrently \"npm run start\" \"npm run server\""
+    "start": "nodemon server"
   },
   "author": "",
   "license": "ISC",
