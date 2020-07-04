@@ -137,7 +137,7 @@ if (process.env.NODE_ENV === 'production') {
   //Return all requests to react app
   app.get('*', (req, res) => {
     // res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
-    res.sendFile('index.html', { root: path.join(__dirname, '../build') });
+    res.sendFile('../build/index.html', {root: path.dirname(__dirname)});
   });
 }
 
