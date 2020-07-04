@@ -27,6 +27,10 @@ const GenreHeading = styled.h2`
   font-weight: 500;
   font-size: 22px;
   margin-left: 40px;
+  @media only screen and (max-width: 600px) {
+    text-align: center;
+    margin-left: 0px;
+  }
 `;
 
 class Landing extends Component {
