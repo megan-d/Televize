@@ -133,11 +133,10 @@ app.get('/api/shows/:id', async (req, res) => {
 // Serve static assets in production. Heroku will automatically default the NODE_ENV to production.
 if (process.env.NODE_ENV === 'production') {
   // Set static folder (to be public folder). We want index.html to be our static file.
-  app.use(express.static('../build'));
+  app.use(express.static('client/build'));
   //Return all requests to react app
   app.get('*', (req, res) => {
-    // res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
-    res.sendFile('../build/index.html', {root: path.dirname(__dirname)});
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
