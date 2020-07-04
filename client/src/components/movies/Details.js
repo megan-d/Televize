@@ -46,8 +46,8 @@ const DetailsWrapper = styled.div`
   }
   @media only screen and (max-width: 760px) {
     top: 5%;
-    min-height: 70vh;
-    max-height: 70vh;
+    min-height: 80vh;
+    max-height: 80vh;
     width: 90%;
     min-width: 90%;
     left: 5%;
