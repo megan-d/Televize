@@ -62,13 +62,17 @@ footer p {
 }
 
 input {
-  border-radius: 3px;
-  border: 1px solid black;
+  border-radius: 2px;
+  border: 0.1px solid black;
 }
 
 input:focus{
   outline: none;
   border: 2px solid #fdc108;
+}
+
+.btn:focus{
+  outline: none;
 }
 
 img:-moz-loading {

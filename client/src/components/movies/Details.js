@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const DetailsBox = styled.div`
   height: 90vh;
-  width: 80%;
+  width: 90%;
   background-repeat: no-repeat;
   background-position: top center;
   margin: 5px auto 50px auto;
@@ -14,10 +14,9 @@ const DetailsBox = styled.div`
   position: relative;
   font-family: 'Saira', sans-serif;
   background-image: ${(props) => props.backdrop};
-  @media only screen and (max-width: 780px) {
+  @media only screen and (max-width: 760px) {
     min-height: 90vh;
     margin: 10px auto;
-    width: 90%;
   }
 `;
 
@@ -41,8 +40,10 @@ const DetailsWrapper = styled.div`
   @media only screen and (max-width: 1000px) {
     top: 5%;
   }
-  @media only screen and (max-width: 780px) {
+  @media only screen and (max-width: 760px) {
     min-height: 70vh;
+    width: 90%;
+    left: 5%;
   }
 `;
 
@@ -54,7 +55,7 @@ const DetailsHorizontal = styled.hr`
 
 const FlexContainer = styled.div`
   display: flex;
-  @media only screen and (max-width: 780px) {
+  @media only screen and (max-width: 760px) {
     flex-direction: column;
   }
 `;
@@ -62,7 +63,7 @@ const FlexContainer = styled.div`
 const DetailsLeft = styled.div`
   flex: 2;
   margin-left: 20px;
-  @media only screen and (max-width: 780px) {
+  @media only screen and (max-width: 760px) {
     margin-right: 20px;
   }
 `;
@@ -75,7 +76,7 @@ const DetailsRight = styled.div`
   align-items: flex-start;
   margin-left: 10%;
   margin-right: 5px;
-  @media only screen and (max-width: 780px) {
+  @media only screen and (max-width: 760px) {
     display: block;
     margin-left: 20px;
     margin-right: 20px;
@@ -154,7 +155,7 @@ const Details = (props) => {
             size='sm'
             style={{
               maxWidth: '100px',
-              marginLeft: '35px',
+              marginLeft: '20px',
               marginTop: '20px',
               marginBottom: '5px',
             }}
@@ -170,7 +171,7 @@ const Details = (props) => {
             size='sm'
             style={{
               maxWidth: '100px',
-              marginLeft: '35px',
+              marginLeft: '20px',
               marginTop: '20px',
               marginBottom: '5px',
             }}
@@ -185,7 +186,7 @@ const Details = (props) => {
             size='sm'
             style={{
               maxWidth: '100px',
-              marginLeft: '35px',
+              marginLeft: '20px',
               marginTop: '20px',
               marginBottom: '5px',
             }}

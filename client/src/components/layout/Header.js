@@ -6,6 +6,7 @@ import tv from '../../assets/tv-logo.png';
 const Logo = styled.img`
   height: 30px;
   margin-right: 10px;
+  margin-left: 20px;
 `;
 
 const SiteTitle = styled.a`
@@ -20,7 +21,7 @@ const SiteTitle = styled.a`
 
 const Header = () => {
   return (
-    <Navbar style={{ backgroundColor: 'rgb(14, 13, 13)', minHeight: '8vh' }}>
+    <Navbar style={{ backgroundColor: 'rgb(14, 13, 13)', minHeight: '8vh' }} className='px-0'>
       <Navbar.Brand>
         <SiteTitle href='/'>
           <Logo src={tv} alt='television'></Logo>
