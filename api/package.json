@@ -4,11 +4,15 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server"
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix ../",
+    "heroku-postbuild": "npm install --prefix ../ && npm run build --prefix ../"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^5.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "node-fetch": "^2.6.0",

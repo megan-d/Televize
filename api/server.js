@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const fetch = require('node-fetch');
+const path = require('path');
 
 dotenv.config();
 const app = express();
@@ -9,10 +10,6 @@ const key = process.env.API_KEY;
 
 //To get access to req.body (no longer need body parser npm package)
 app.use(express.json());
-
-//Listen on port
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
 
 //DEFINE ROUTES
 
@@ -132,3 +129,17 @@ app.get('/api/shows/:id', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+// Serve static assets in production. Heroku will automatically default the NODE_ENV to production.
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder (to be public folder). We want index.html to be our static file.
+  app.use(express.static('../build'));
+  //Return all requests to react app
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+  });
+}
+
+//Listen on port
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`App is listening on port ${port}`));
