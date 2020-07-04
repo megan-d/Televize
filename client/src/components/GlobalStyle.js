@@ -66,6 +66,11 @@ input {
   border: 0.1px solid black;
 }
 
+/* Make search not appear rounded on safari mobile */
+input[type="search"] {
+  -webkit-appearance: none;
+}
+
 input:focus{
   outline: none;
   border: 2px solid #fdc108;
@@ -73,6 +78,7 @@ input:focus{
 
 .btn:focus{
   outline: none;
+  
 }
 
 img:-moz-loading {

@@ -17,6 +17,7 @@ const DetailsBox = styled.div`
   @media only screen and (max-width: 760px) {
     min-height: 90vh;
     margin: 10px auto;
+    width: 95%;
   }
 `;
 
@@ -24,7 +25,8 @@ const DetailsWrapper = styled.div`
   opacity: 0.8;
   -webkit-opacity: 0.8;
   background-color: #1d1c1c;
-  width: 80%;
+  width: 70%;
+  max-width: 70%;
   margin: 0 auto;
   z-index: 5;
   border-radius: 3px;
@@ -33,16 +35,21 @@ const DetailsWrapper = styled.div`
   max-height: 80vh;
   position: absolute;
   top: 10%;
-  left: 10%;
+  left: 15%;
   overflow: auto;
   justify-content: space-between;
   font-family: 'Saira', sans-serif;
-  @media only screen and (max-width: 1000px) {
-    top: 5%;
+  @media only screen and (max-width: 1200px) {
+    left: 10%;
+    width: 80%;
+    max-width: 80%;
   }
   @media only screen and (max-width: 760px) {
+    top: 5%;
     min-height: 70vh;
+    max-height: 70vh;
     width: 90%;
+    min-width: 90%;
     left: 5%;
   }
 `;
